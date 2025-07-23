@@ -1,8 +1,18 @@
+#preloader,
+.lightbox {
+  width: 100%;
+  height: 100%
+}
+
+.project-item,
+body,
+html {
+  box-sizing: border-box
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+  background-color: #f4f4f4
 }
 
 .contact-form {
@@ -11,7 +21,12 @@ body {
   padding: 2rem;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1)
+}
+
+.service-card,
+footer {
+  background: var(--bg-card-light)
 }
 
 .contact-form input,
@@ -20,7 +35,7 @@ body {
   padding: 10px;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 5px
 }
 
 .contact-form button {
@@ -29,331 +44,272 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: pointer
+}
+
+.lightbox-content,
+.service-card {
+  border-radius: 12px;
+  text-align: center
 }
 
 .contact-form button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3
 }
 
-/* Service Section Styling */
 .section-title {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: var(--highlight);
+  color: var(--highlight)
 }
 
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+  gap: 2rem
 }
 
 .service-card {
-  background: var(--bg-card-light);
-  border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
-  text-align: center;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
+  transition: transform .3s, box-shadow .3s;
+  cursor: default
+}
+
+.lightbox img,
+.project-img,
+.service-img {
+  cursor: zoom-in;
+  cursor: zoom-in
 }
 
 body.dark-mode .service-card {
   background: var(--bg-card-dark);
-  color: var(--text-light);
+  color: var(--text-light)
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, .2)
 }
 
 .service-img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
   margin-bottom: 1rem;
-  cursor: zoom-in;
-  transition: transform 0.3s;
+  transition: transform .3s
 }
 
+.project-img:hover,
 .service-img:hover {
-  transform: scale(1.03);
+  transform: scale(1.03)
 }
 
-/* Lightbox popup */
 .lightbox {
   position: fixed;
-  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, .85);
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 9999
+}
+
+#preloader,
+.clients-grid,
+.infinite-scroll,
+.infinite-scroll .project-wrapper,
+.project-carousel,
+.project-track,
+.project-wrapper {
+  display: flex;
+  display: flex
 }
 
 .lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(255,255,255,0.2);
-  animation: zoomIn 0.4s ease;
-  transition: transform 0.3s ease;
-  cursor: zoom-in;
+  transition: transform .3s;
+  width: auto;
+  height: auto;
+  box-shadow: 0 0 30px rgba(255, 255, 255, .2);
+  animation: .4s zoomIn;
+  cursor: zoom-out
 }
 
-
 @keyframes zoomIn {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(.5);
+    opacity: 0
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1
+  }
 }
 
 .fade-in {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.6s ease;
+  transition: .6s
 }
 
-.hidden {
-  opacity: 0;
-  transform: translateY(30px);
-}
-/* Fade-in animation */
 .hidden {
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.8s ease;
+  transition: .8s
 }
 
 .fade-in {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0)
 }
 
-/* Enhanced Lightbox with Details */
 .lightbox-content {
   background: #fff;
   padding: 2rem;
-  border-radius: 12px;
   max-width: 600px;
-  text-align: center;
   color: #111;
   position: relative;
-  animation: zoomIn 0.3s ease;
+  animation: .3s zoomIn
 }
 
 body.dark-mode .lightbox-content {
   background: #222;
-  color: #eee;
+  color: #eee
 }
-
-.lightbox img {
-  width: auto;
-  height: auto;
-  max-width: 800px;
-  max-height: 90vh;
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(255,255,255,0.2);
-  animation: zoomIn 0.4s ease;
-  cursor: zoom-out;
-}
-
 
 .lightbox-content h2 {
-  margin: 0.5rem 0 0;
+  margin: .5rem 0 0;
   font-size: 1.6rem;
-  color: var(--highlight);
+  color: var(--highlight)
 }
 
 .lightbox-content p {
-  margin-top: 0.75rem;
+  margin-top: .75rem;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.6
 }
 
 .zoom-controls {
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 10000;
+  z-index: 10000
 }
 
 .zoom-controls button {
   background: var(--highlight, #007bff);
-  color: white;
+  color: #fff;
   border: none;
-  padding: 0.4rem 0.7rem;
-  margin-left: 0.4rem;
+  padding: .4rem .7rem;
+  margin-left: .4rem;
   font-size: 1.2rem;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background .3s
 }
 
 .zoom-controls button:hover {
-  background: #0056b3;
+  background: #0056b3
 }
 
 body.dark-mode .zoom-controls button {
-  background: #1e90ff;
+  background: #1e90ff
 }
 
 body.dark-mode .zoom-controls button:hover {
-  background: #1273cc;
-}
-
-.project-img {
-  cursor: zoom-in;
-  transition: transform 0.3s ease;
-}
-.project-img:hover {
-  transform: scale(1.03);
-}
-
-
-.lightbox img {
-  cursor: zoom-out;
+  background: #1273cc
 }
 
 #clients,
 footer {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important
 }
 
-
 .clients-grid {
-  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
   padding: 0;
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1000px
 }
 
-
+#clients h2,
+.logo-slider,
+footer {
+  margin: 0 !important
+}
 
 #preloader {
   position: fixed;
-  width: 100%;
-  height: 100%;
   background: #fff;
   z-index: 99999;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center
 }
+
 .spinner {
   border: 5px solid #ccc;
   border-top: 5px solid var(--highlight, #007bff);
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  animation: spin 1s linear infinite;
+  animation: 1s linear infinite spin
 }
+
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg)
+  }
 }
 
-
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-footer {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
+  height: 100%
 }
 
 .lightbox {
   bottom: 0;
-  top: 0;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-body {
-  box-sizing: border-box;
-}
-
-footer {
-  margin: 0 !important;
-  padding: 1.5rem 0 0.5rem;
-  border-top: 2px solid var(--highlight);
-}
-
-#clients,
-footer {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
+  top: 0
 }
 
 .logo-slider {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-#clients h2 {
-  margin: 0 !important;
-  padding-bottom: 10px; /* optional if you need small spacing */
-}
-
-
-#clients {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
+  padding: 0 !important
 }
 
 #clients,
-.logo-slider,
 #clients h2,
+.logo-slider,
 footer {
   margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
+  padding-bottom: 0 !important
 }
 
 footer {
-  margin-top: 0 !important;
-  padding-top: 10px;
+  border-top: 2px solid var(--highlight);
+  text-align: center;
+  padding: 1.5rem 1.5rem 1rem;
+  color: var(--text-muted-light);
+  border-top: 2px solid var(--highlight);
+  font-size: .95rem
 }
 
-
 .project-carousel {
-  position: relative;
-  overflow: hidden;
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 0 auto
 }
 
 .project-wrapper {
-  display: flex;
-  transition: transform 0.8s ease-in-out;
-  width: 100%;
+  transition: transform .8s ease-in-out;
+  width: 100%
 }
 
 .project-item {
-  min-width: 100%;
-  box-sizing: border-box;
-  padding: 20px;
   text-align: left;
   background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.08);
-  transition: transform 0.4s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .08)
 }
 
 .project-img {
@@ -361,147 +317,103 @@ footer {
   max-height: 400px;
   object-fit: cover;
   border-radius: 10px;
-  cursor: zoom-in;
   margin-bottom: 15px;
-  transition: transform 0.3s;
-}
-.project-img:hover {
-  transform: scale(1.03);
+  transition: transform .3s
 }
 
-.prev-btn, .next-btn {
+.next-btn,
+.prev-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, .6);
   color: #fff;
   font-size: 2rem;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: .5rem 1rem;
   cursor: pointer;
   z-index: 10;
   border-radius: 8px;
-  transition: background 0.3s;
-}
-.prev-btn:hover, .next-btn:hover {
-  background: rgba(0,0,0,0.8);
+  transition: background .3s
 }
 
-.prev-btn { left: 10px; }
-.next-btn { right: 10px; }
+.next-btn:hover,
+.prev-btn:hover {
+  background: rgba(0, 0, 0, .8)
+}
 
-@media (max-width: 768px) {
+.prev-btn {
+  left: 10px
+}
+
+.next-btn {
+  right: 10px
+}
+
+@media (max-width:768px) {
   .project-item {
-    padding: 10px;
+    padding: 10px
   }
 }
 
-
 .dark-toggle-btn {
-  background: none;
+  background: 0 0;
   border: none;
   font-size: 24px;
   cursor: pointer;
   color: inherit;
-  transition: transform 0.3s ease;
+  transition: transform .3s
 }
 
 .dark-toggle-btn:hover {
-  transform: scale(1.2);
-}
-
-
-
-
-
-
-
-
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  padding-bottom: 1rem; /* ✅ Added for professional spacing below footer */
-  background: var(--bg-card-light);
-  color: var(--text-muted-light);
-  margin-top: 2rem;
-  border-top: 2px solid var(--highlight);
-  font-size: 0.95rem;
+  transform: scale(1.2)
 }
 
 body.dark-mode footer {
   background: var(--bg-card-dark);
-  color: var(--text-muted-dark);
+  color: var(--text-muted-dark)
 }
 
 footer .logo {
   display: inline-block;
-  margin-bottom: 0.3rem;
+  margin-bottom: .3rem
 }
 
+body.dark-mode footer::after,
 footer::after {
   content: " Site developed by Rajinfoworks";
   display: block;
-  color: var(--accent);
   font-weight: 600;
-  margin-top: 0.5rem;
+  margin-top: .5rem
+}
+
+footer::after {
+  color: var(--accent)
 }
 
 body.dark-mode footer::after {
-  content: " Site developed by Rajinfoworks";
-  display: block;
-  color: #ffffff !important;
-  font-weight: 600;
-  margin-top: 0.5rem;
+  color: #fff !important
 }
 
-
-
-
-
-
-
-
-
-/* --- Uniform service image sizing --- */
 .service-img {
   width: 100%;
-  height: 200px; /* You can adjust this to 180px or 220px if needed */
+  height: 200px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 10px
 }
 
-/* --- Lightbox image professional size --- */
 .lightbox img {
+  cursor: zoom-out;
   max-width: 90%;
   max-height: 80vh;
   border-radius: 10px;
   object-fit: contain;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-
-
-
-
-
-
-
-
-.project-carousel {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .5)
 }
 
 .project-track {
-  display: flex;
   width: 100%;
-  overflow: hidden;
-}
-
-.project-wrapper {
-  display: flex;
-  animation: scrollProjects 60s linear infinite;
+  overflow: hidden
 }
 
 .project-item {
@@ -509,94 +421,76 @@ body.dark-mode footer::after {
   max-width: 300px;
   flex: 0 0 auto;
   margin: 0 1rem;
-}
-
-@keyframes scrollProjects {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-
-
-
-
-
-
-
-.project-carousel {
-  position: relative;
-  overflow-x: auto;
-  padding: 1rem;
-  scroll-snap-type: x mandatory;
-  display: flex;
-  gap: 1.5rem;
-  scroll-behavior: smooth;
-}
-
-.project-wrapper {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-  padding-bottom: 1rem;
-}
-
-.project-item {
   flex: 0 0 300px;
   background: var(--bg-card-light);
   color: var(--text-light);
   border-radius: 8px;
   padding: 1rem;
   scroll-snap-align: start;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  transition: transform .3s
+}
+
+@keyframes scrollProjects {
+  0% {
+    transform: translateX(0)
+  }
+
+  100% {
+    transform: translateX(-50%)
+  }
+}
+
+.project-carousel {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  overflow-x: auto;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  scroll-behavior: smooth
+}
+
+.project-wrapper {
+  animation: 60s linear infinite scrollProjects;
+  gap: 1.5rem;
+  width: max-content;
+  padding-bottom: 1rem
 }
 
 .project-item img {
   width: 100%;
   height: auto;
   border-radius: 6px;
-  margin-bottom: 0.75rem;
+  margin-bottom: .75rem
 }
 
 body.dark-mode .project-item {
   background: var(--bg-card-dark);
-  color: var(--text-dark);
+  color: var(--text-dark)
 }
 
-
-
-
-
-
-
-
-
-
 .infinite-scroll {
-  display: flex;
   width: 100%;
   overflow: hidden;
-  position: relative;
+  position: relative
 }
 
 .infinite-scroll .project-wrapper {
-  display: flex;
-  animation: scrollLoop 30s linear infinite;
+  animation: 30s linear infinite scrollLoop
 }
 
 .infinite-scroll .clone {
-  margin-left: 24px;
+  margin-left: 24px
 }
 
 @keyframes scrollLoop {
   0% {
-    transform: translateX(0);
+    transform: translateX(0)
   }
+
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-50%)
   }
 }
