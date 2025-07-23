@@ -1,43 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang=en>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
+  <meta charset=UTF-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <meta name=description
     content="CORRONiL CONTROL offers high-quality surface treatment and coating solutions for industries. Trusted by top clients in India.">
-  <meta name="keywords"
+  <meta name=keywords
     content="Corronil Control, industrial coating, powder coating, anti-rust treatment, India, surface protection">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.corronilcontrol.com/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="fonts/your-font.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-
-
-  <title>CORRON<span class="logo-red"></span>i</span>L CONTROL
+  <meta name=robots content="index, follow">
+  <link rel=canonical href=https://www.corronilcontrol.com/>
+  <link rel=preconnect href=https://fonts.googleapis.com>
+  <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+  <link rel=preload href=fonts/your-font.woff2 as=font type=font/woff2 crossorigin=anonymous>
+  <title>CORRON<span class=logo-red></span>iL CONTROL
   </title>
-
-
-  <!-- SEO Meta Tags -->
-  <meta name="title" content="CORRONiL CONTROL | Surface Protection Experts">
-  <meta name="description"
+  <meta name=title content="CORRONiL CONTROL | Surface Protection Experts">
+  <meta name=description
     content="CORRONiL CONTROL offers expert surface treatment and protection services including powder coating, sandblasting, industrial painting, and more.">
-  <meta name="keywords"
+  <meta name=keywords
     content="CORRONiL, Surface Protection, Powder Coating, Industrial Coating, Sandblasting, Corrosion Control">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Raj Sharma">
-  <meta property="og:title" content="CORRONiL CONTROL">
-  <meta property="og:description" content="Professional Surface Protection & Coating Services in India">
-  <meta property="og:url" content="https://www.corronilcontrol.com">
-
-
-
-  <link rel="stylesheet" href="style.css" />
-
-
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta name=robots content="index, follow">
+  <meta name=author content="Raj Sharma">
+  <meta property=og:title content="CORRONiL CONTROL">
+  <meta property=og:description content="Professional Surface Protection & Coating Services in India">
+  <meta property=og:url content=https://www.corronilcontrol.com>
+  <link rel=stylesheet href=style.css>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel=stylesheet>
   <style>
     :root {
       --bg-light: #ffffff;
@@ -54,48 +43,45 @@
       --highlight2: #008dc5;
       --shadow: rgba(0, 0, 0, 0.08);
       --radius: 10px;
-      --transition: 0.3s ease;
+      --transition: 0.3s ease
     }
 
     body {
       margin: 0;
       background: var(--bg-light);
       color: var(--text-main-light);
-      font-family: 'Poppins', sans-serif;
-      transition: background var(--transition), color var(--transition);
+      font-family: Poppins, sans-serif;
+      transition: background var(--transition), color var(--transition)
     }
 
     body.dark-mode {
       background: var(--bg-dark);
-      color: var(--text-main-dark);
+      color: var(--text-main-dark)
     }
 
-    body.dark-mode p,
     body.dark-mode h1,
     body.dark-mode h2,
-    body.dark-mode h3 {
-      color: var(--text-main-dark);
+    body.dark-mode h3,
+    body.dark-mode p {
+      color: var(--text-main-dark)
     }
 
-    /* Scroll animation styles */
     .animate {
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: opacity .6s ease-out, transform .6s ease-out
     }
 
     .animate.show {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0)
     }
 
     .nav-link.active-link {
       color: var(--highlight);
-      font-weight: bold;
-      border-bottom: 2px solid var(--highlight);
+      font-weight: 700;
+      border-bottom: 2px solid var(--highlight)
     }
-
-
 
     #topBtn {
       position: fixed;
@@ -103,69 +89,65 @@
       right: 25px;
       z-index: 999;
       background-color: var(--highlight, #e63946);
-      color: white;
+      color: #fff;
       border: none;
       padding: 12px 16px;
       border-radius: 50%;
       font-size: 20px;
       cursor: pointer;
       display: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, .2)
     }
 
     #topBtn:hover {
-      background-color: #c62828;
+      background-color: #c62828
     }
 
     body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
+      overflow-x: hidden
     }
-
-
 
     .logo-slider {
       overflow: hidden;
       position: relative;
       width: 100%;
       background: var(--bg-card-light);
-      padding: 1rem 0;
+      padding: 1rem 0
     }
 
     body.dark-mode .logo-slider {
-      background: var(--bg-card-dark);
+      background: var(--bg-card-dark)
     }
 
     .slide-track {
       display: flex;
       width: calc(150px * 10);
-      /* 10 = number of logos shown including repeat */
-      animation: scroll 20s linear infinite;
+      animation: scroll 20s linear infinite
     }
 
     .client-logo {
       width: 150px;
       margin: 0 20px;
-      opacity: 0.8;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: .8;
+      transition: transform .3s ease, opacity .3s ease
     }
 
     .client-logo:hover {
       transform: scale(1.1);
-      opacity: 1;
+      opacity: 1
     }
 
     @keyframes scroll {
       0% {
-        transform: translateX(0);
+        transform: translateX(0)
       }
 
       100% {
-        transform: translateX(-50%);
+        transform: translateX(-50%)
       }
     }
-
 
     #topBtn {
       display: none;
@@ -175,20 +157,18 @@
       z-index: 99;
       font-size: 18px;
       background-color: var(--highlight);
-      color: white;
+      color: #fff;
       border: none;
       padding: 10px 14px;
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      transition: opacity 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+      transition: opacity .3s ease
     }
 
     #topBtn:hover {
-      background-color: #ff4d4d;
+      background-color: #ff4d4d
     }
-
-
 
     #whatsappBtn {
       position: fixed;
@@ -196,25 +176,23 @@
       right: 20px;
       z-index: 1000;
       width: 50px;
-      height: 50px;
+      height: 50px
     }
 
     #whatsappBtn img {
       width: 100%;
-      height: auto;
+      height: auto
     }
 
-
-    /* Simple bounce animation */
     @keyframes bounce {
 
       0%,
       100% {
-        transform: translateY(0);
+        transform: translateY(0)
       }
 
       50% {
-        transform: translateY(-10px);
+        transform: translateY(-10px)
       }
     }
 
@@ -226,20 +204,18 @@
       z-index: 1000;
       font-size: 18px;
       background-color: var(--highlight);
-      color: white;
+      color: #fff;
       border: none;
       border-radius: 50%;
       padding: 12px 16px;
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      transition: opacity 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+      transition: opacity .3s ease
     }
 
     #scrollTopBtn:hover {
-      background-color: var(--accent);
+      background-color: var(--accent)
     }
-
-
 
     nav {
       position: fixed;
@@ -248,18 +224,18 @@
       right: 0;
       background: var(--bg-light);
       color: var(--text-main-light);
-      padding: 0.8rem 1rem;
+      padding: .8rem 1rem;
       box-shadow: 0 2px 8px var(--shadow);
       z-index: 999;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background var(--transition), color var(--transition);
+      transition: background var(--transition), color var(--transition)
     }
 
     body.dark-mode nav {
       background: var(--bg-dark);
-      color: var(--text-main-dark);
+      color: var(--text-main-dark)
     }
 
     .nav-logo {
@@ -267,68 +243,65 @@
       font-size: 1.3rem;
       color: var(--accent);
       text-decoration: none;
-      pointer-events: none;
+      pointer-events: none
     }
 
     .nav-toggle {
       display: none;
       font-size: 1.8rem;
-      cursor: pointer;
+      cursor: pointer
     }
 
     .nav-container {
       display: flex;
       gap: 1rem;
-      align-items: center;
+      align-items: center
     }
 
     .nav-container a {
       text-decoration: none;
       color: var(--accent);
-      padding: 0.5rem 1rem;
+      padding: .5rem 1rem;
       border-radius: var(--radius);
       font-weight: 600;
       transition: all var(--transition);
-      white-space: nowrap;
+      white-space: nowrap
     }
 
     .nav-container a:hover {
       background: var(--highlight);
-      color: #fff;
+      color: #fff
     }
 
     .mode-toggle {
       cursor: pointer;
-      padding: 0.5rem 1rem;
+      padding: .5rem 1rem;
       background: var(--highlight2);
       color: #fff;
       border: none;
       border-radius: var(--radius);
-      font-weight: 600;
+      font-weight: 600
     }
 
-    /* Scroll Animation */
     section {
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition: opacity .6s ease, transform .6s ease
     }
 
     section.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0)
     }
 
-    /* Nav scroll effect */
     header.scrolled {
       background-color: var(--bg-card-light);
-      /* or dark if in dark mode */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+      transition: background-color .3s, box-shadow .3s
     }
 
     body.dark-mode header.scrolled {
-      background-color: var(--bg-card-dark);
+      background-color: var(--bg-card-dark)
     }
 
     section {
@@ -337,109 +310,103 @@
       margin: auto;
       opacity: 0;
       transform: translateY(50px);
-      transition: all 1s ease;
+      transition: all 1s ease
     }
 
     section.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0)
     }
-
 
     h1,
     h2,
     h3 {
       color: var(--accent);
-      text-align: center;
+      text-align: center
     }
 
     .logo-red {
-      color: var(--logo-red);
+      color: var(--logo-red)
     }
 
     p {
       color: var(--text-muted-light);
-      line-height: 1.7;
+      line-height: 1.7
     }
 
     body.dark-mode p {
-      color: var(--text-muted-dark);
+      color: var(--text-muted-dark)
     }
 
     .hero {
       min-height: 100vh;
       padding-top: 100px;
-      background: linear-gradient(120deg, #e0f7ff, #ffffff);
+      background: linear-gradient(120deg, #e0f7ff, #fff);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      text-align: center
     }
 
     body.dark-mode header {
-      background-color: #0a0f1a;
-      /* adjust for dark navbar background */
+      background-color: #0a0f1a
     }
 
     body.dark-mode nav a {
-      color: #ffffff !important;
-      /* bright text in dark mode */
+      color: #fff !important
     }
 
     body.dark-mode .logo-text {
-      color: #ffffff !important;
+      color: #fff !important
     }
 
     body.dark-mode .logo img {
-      filter: brightness(1.5);
+      filter: brightness(1.5)
     }
 
-
     body.dark-mode .hero {
-      background: linear-gradient(120deg, #1f2937, #111827);
+      background: linear-gradient(120deg, #1f2937, #111827)
     }
 
     .hero h1 {
       font-size: 3rem;
-      animation: bounceIn 1s ease-in-out;
+      animation: bounceIn 1s ease-in-out
     }
 
     .hero h2 {
-      font-size: 1.5rem;
+      font-size: 1.5rem
     }
 
     .hero button {
       margin-top: 2rem;
-      padding: 0.8rem 2rem;
+      padding: .8rem 2rem;
       background: var(--highlight2);
       color: #fff;
       border: none;
       border-radius: var(--radius);
       cursor: pointer;
-      font-weight: bold;
-      transition: background var(--transition);
+      font-weight: 700;
+      transition: background var(--transition)
     }
 
     .hero button:hover {
-      background: var(--highlight);
+      background: var(--highlight)
     }
-
-
 
     @keyframes bounceIn {
       0% {
-        transform: scale(0.5);
-        opacity: 0;
+        transform: scale(.5);
+        opacity: 0
       }
 
       60% {
         transform: scale(1.1);
-        opacity: 1;
+        opacity: 1
       }
 
       100% {
-        transform: scale(1);
+        transform: scale(1)
       }
     }
 
@@ -448,7 +415,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
-      margin-top: 2rem;
+      margin-top: 2rem
     }
 
     .card,
@@ -458,17 +425,17 @@
       border-radius: var(--radius);
       box-shadow: 0 6px 18px var(--shadow);
       border-top: 4px solid var(--highlight2);
-      transition: transform var(--transition), background var(--transition);
+      transition: transform var(--transition), background var(--transition)
     }
 
     body.dark-mode .card,
     body.dark-mode .testimonial {
-      background: var(--bg-card-dark);
+      background: var(--bg-card-dark)
     }
 
     .card:hover,
     .testimonial:hover {
-      transform: translateY(-6px);
+      transform: translateY(-6px)
     }
 
     .project-item {
@@ -481,17 +448,17 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 1.5rem;
-      border-left: 5px solid var(--highlight);
+      border-left: 5px solid var(--highlight)
     }
 
     body.dark-mode .project-item {
-      background: var(--bg-card-dark);
+      background: var(--bg-card-dark)
     }
 
     .project-item img {
       width: 100%;
       max-width: 320px;
-      border-radius: var(--radius);
+      border-radius: var(--radius)
     }
 
     .clients-grid {
@@ -500,7 +467,7 @@
       align-items: center;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-top: 2rem;
+      margin-top: 2rem
     }
 
     .clients-grid img {
@@ -509,11 +476,9 @@
       object-fit: contain;
       border-radius: var(--radius);
       background: #f9f9f9;
-      padding: 0.5rem;
-      box-shadow: 0 2px 6px var(--shadow);
-      /* Removed any hover or animation styles */
+      padding: .5rem;
+      box-shadow: 0 2px 6px var(--shadow)
     }
-
 
     .contact-form {
       max-width: 500px;
@@ -521,35 +486,35 @@
       background: #fdfdfd;
       padding: 1rem;
       border-radius: var(--radius);
-      box-shadow: 0 2px 8px var(--shadow);
+      box-shadow: 0 2px 8px var(--shadow)
     }
 
     body.dark-mode .contact-form {
-      background: var(--bg-card-dark);
+      background: var(--bg-card-dark)
     }
 
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 0.8rem;
+      padding: .8rem;
       border: 1px solid #ccc;
       border-radius: var(--radius);
-      margin-top: 0.5rem;
+      margin-top: .5rem
     }
 
     .contact-form button {
       width: 100%;
-      padding: 0.8rem;
+      padding: .8rem;
       background: var(--highlight);
       color: #fff;
       border: none;
       border-radius: var(--radius);
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 700
     }
 
     .contact-form button:hover {
-      background: var(--highlight2);
+      background: var(--highlight2)
     }
 
     .contact-info {
@@ -558,70 +523,64 @@
       border-radius: var(--radius);
       box-shadow: 0 6px 18px var(--shadow);
       margin-top: 2rem;
-      border-left: 5px solid var(--highlight);
+      border-left: 5px solid var(--highlight)
     }
 
     body.dark-mode .contact-info {
-      background: var(--bg-card-dark);
+      background: var(--bg-card-dark)
     }
 
-
-
-    @media (max-width: 768px) {
+    @media (max-width:768px) {
       .nav-toggle {
-        display: block;
+        display: block
       }
 
       .nav-container {
         display: none;
         flex-direction: column;
-        width: 100%;
+        width: 100%
       }
 
       .nav-container.open {
-        display: flex;
+        display: flex
       }
     }
 
-    /* Button Hover Effect */
     .hero button {
       background: var(--highlight);
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: .75rem 1.5rem;
       font-size: 1rem;
       color: #fff;
       cursor: pointer;
       border-radius: 5px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform .3s ease, box-shadow .3s ease
     }
 
     .hero button:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 15px var(--highlight);
+      box-shadow: 0 0 15px var(--highlight)
     }
 
-    /* Card Hover Animation */
     .card:hover,
     .testimonial:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .15);
+      transition: all .3s ease
     }
 
-    /* Client Logo Hover Zoom */
     .clients-grid img {
-      transition: transform 0.3s ease;
+      transition: transform .3s ease
     }
 
     .clients-grid img:hover {
-      transform: scale(1.05);
+      transform: scale(1.05)
     }
 
-    /* Navbar Link Hover */
     .nav-container a {
       position: relative;
       text-decoration: none;
-      padding-bottom: 3px;
+      padding-bottom: 3px
     }
 
     .nav-container a::after {
@@ -632,11 +591,11 @@
       width: 0%;
       height: 2px;
       background: var(--highlight);
-      transition: width 0.3s ease;
+      transition: width .3s ease
     }
 
     .nav-container a:hover::after {
-      width: 100%;
+      width: 100%
     }
 
     #backToTopBtn {
@@ -652,67 +611,51 @@
       border-radius: 50%;
       padding: 10px 14px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: background 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+      transition: background .3s
     }
 
     #backToTopBtn:hover {
-      background-color: var(--highlight-dark, #d60000);
+      background-color: var(--highlight-dark, #d60000)
     }
   </style>
 </head>
 
 <body>
-
-  <div id="preloader">
-    <div class="spinner"></div>
+  <div id=preloader>
+    <div class=spinner></div>
   </div>
-
-
   <nav>
-    <a class="nav-logo" href="#home">CORRON<span class="logo-red">i</span>L CONTROL</a>
-    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
-    <div class="nav-container" id="navLinks">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#services" class="nav-link">Services</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#clients" class="nav-link">Clients</a>
-      <a href="#testimonials" class="nav-link">Testimonials</a>
-      <a href="#contact" class="nav-link">Contact</a>
-
+    <a class=nav-logo href=#home>CORRON<span class=logo-red>i</span>L CONTROL</a>
+    <div class=nav-toggle onclick=toggleMenu()>☰</div>
+    <div class=nav-container id=navLinks>
+      <a href=#about class=nav-link>About</a>
+      <a href=#services class=nav-link>Services</a>
+      <a href=#projects class=nav-link>Projects</a>
+      <a href=#clients class=nav-link>Clients</a>
+      <a href=#testimonials class=nav-link>Testimonials</a>
+      <a href=#contact class=nav-link>Contact</a>
     </div>
-
-
-
-
-
-    <button id="darkModeToggle" onclick="toggleDarkMode()" class="dark-toggle-btn">
-      <span id="darkModeIcon">🌙</span>
+    <button id=darkModeToggle onclick=toggleDarkMode() class=dark-toggle-btn>
+      <span id=darkModeIcon>🌙</span>
     </button>
-
   </nav>
-
-
-  <section id="home" class="hero animate-section">
-    <div class="overlay"></div>
-    <h1>CORRON<span class="logo-red">i</span>L CONTROL</h1>
+  <section id=home class="hero animate-section">
+    <div class=overlay></div>
+    <h1>CORRON<span class=logo-red>i</span>L CONTROL</h1>
     <h2>Premium Surface Protection</h2>
     <p>Setting new standards for durability, performance, and corrosion control across diverse industries worldwide.</p>
-    <button onclick="smoothScrollTo('about')">Discover More</button>
+    <button onclick='smoothScrollTo("about")'>Discover More</button>
   </section>
-
-
-  <section id="about" class="animate-section">
-    <h2>About CORRON<span class="logo-red">i</span>L CONTROL</h2>
-    <p><strong>CORRON<span class="logo-red">i</span>L CONTROL
+  <section id=about class=animate-section>
+    <h2>About CORRON<span class=logo-red>i</span>L CONTROL</h2>
+    <p><strong>CORRON<span class=logo-red>i</span>L CONTROL
       </strong> is a trusted name in industrial surface protection, specializing in high-performance solutions that
       prevent corrosion and extend the life of critical infrastructure and equipment.</p>
-
     <p>With years of expertise, we provide advanced services including <strong>powder coating</strong>, <strong>epoxy
         painting</strong>, <strong>thermal spray metallizing</strong>, and <strong>rubber lining</strong>. Our
       techniques are designed to withstand harsh industrial environments, chemical exposure, and extreme temperatures —
       ensuring durability, safety, and reliability for every project.</p>
-
     <p>We proudly serve key sectors such as:</p>
     <ul>
       <li>Oil & Gas Industry</li>
@@ -721,12 +664,9 @@
       <li>Heavy Engineering & Manufacturing</li>
       <li>Water Treatment Facilities</li>
     </ul>
-
-    <p>At CORRON<span class="logo-red">i</span>L CONTROL
-      , quality and client satisfaction come first. We use industry-standard procedures, certified materials, and
-      experienced applicators to ensure precise and long-lasting protection. Every project is executed with a commitment
-      to safety, timelines, and performance.</p>
-
+    <p>At CORRON<span class=logo-red>i</span>L CONTROL , quality and client satisfaction come first. We use
+      industry-standard procedures, certified materials, and experienced applicators to ensure precise and long-lasting
+      protection. Every project is executed with a commitment to safety, timelines, and performance.</p>
     <p><strong>Our Strengths:</strong></p>
     <ul>
       <li>Experienced surface protection specialists</li>
@@ -735,172 +675,144 @@
       <li>On-site and off-site project capabilities</li>
       <li>Reliable support and after-service care</li>
     </ul>
-
     <p>Whether it’s a storage tank, pipeline, structural steel, or plant machinery — CORRON<span
-        class="logo-red">i</span>L CONTROL
-      is your reliable partner for premium surface protection that lasts.</p>
+        class=logo-red>i</span>L CONTROL is your reliable partner for premium surface protection that lasts.</p>
   </section>
-
-  <section id="services" class="animate-section">
-    <h2 class="section-title">Our Services</h2>
-    <div class="service-grid">
-
-      <!-- Powder Coating -->
-      <div class="service-card">
-        <img src="images/powder-coating.webp" alt="Powder Coating" loading="lazy" class="service-img"
+  <section id=services class=animate-section>
+    <h2 class=section-title>Our Services</h2>
+    <div class=service-grid>
+      <div class=service-card>
+        <img src=images/powder-coating.webp alt="Powder Coating" loading=lazy class=service-img
           data-title="Powder Coating"
           data-desc="Eco-friendly, durable surface finish used in industrial and commercial applications. Available in various colors and textures.">
         <h3>Powder Coating</h3>
         <p>Eco-friendly protective finishes with a broad color range and long-lasting durability.</p>
       </div>
-
-      <!-- Sand Blasting -->
-      <div class="service-card">
-        <img src="images/Sand-Blasting.webp" alt="Sand Blasting" loading="lazy" class="service-img"
-          data-title="Sand Blasting"
+      <div class=service-card>
+        <img src=images/Sand-Blasting.webp alt="Sand Blasting" loading=lazy class=service-img data-title="Sand Blasting"
           data-desc="Efficient method to prepare surfaces before coating. Removes rust, paint, and debris for smooth finishing.">
         <h3>Sand Blasting</h3>
         <p>Efficient surface prep for optimal adhesion and smooth finish.</p>
       </div>
-
-      <!-- Epoxy Painting -->
-      <div class="service-card">
-        <img src="images/epoxy.webp" alt="Epoxy Painting" loading="lazy" class="service-img" data-title="Epoxy Painting"
+      <div class=service-card>
+        <img src=images/epoxy.webp alt="Epoxy Painting" loading=lazy class=service-img data-title="Epoxy Painting"
           data-desc="Heavy-duty epoxy coatings offer superior corrosion resistance and are ideal for industrial environments.">
         <h3>Epoxy Painting</h3>
         <p>Heavy-duty coatings for extreme corrosion resistance.</p>
       </div>
-
-      <!-- Zinc Spray Galvanizing -->
-      <div class="service-card">
-        <img src="images/zinc.webp" alt="Zinc Spray" loading="lazy" class="service-img"
-          data-title="Zinc Spray Galvanizing"
+      <div class=service-card>
+        <img src=images/zinc.webp alt="Zinc Spray" loading=lazy class=service-img data-title="Zinc Spray Galvanizing"
           data-desc="Zinc spray provides long-term protection to steel and iron structures against rust and corrosion.">
         <h3>Zinc Spray Galvanizing</h3>
         <p>Long-term protection for steel and iron structures.</p>
       </div>
-
-      <!-- Aluminum/S.S. Metallizing -->
-      <div class="service-card">
-        <img src="images/metallizing.webp" alt="Metallizing" loading="lazy" class="service-img"
+      <div class=service-card>
+        <img src=images/metallizing.webp alt=Metallizing loading=lazy class=service-img
           data-title="Aluminum/S.S. Metallizing"
           data-desc="High-temperature and wear-resistant coatings, ideal for aerospace, marine, and critical infrastructure.">
         <h3>Aluminum/S.S. Metallizing</h3>
         <p>Heat- and wear-resistant coatings for critical components.</p>
       </div>
-
-      <!-- Rubber Lining -->
-      <div class="service-card">
-        <img src="images/rubber.webp" alt="Rubber Lining" loading="lazy" class="service-img" data-title="Rubber Lining"
+      <div class=service-card>
+        <img src=images/rubber.webp alt="Rubber Lining" loading=lazy class=service-img data-title="Rubber Lining"
           data-desc="Protects tanks and pipelines from corrosion, abrasion, and chemical attacks. Enhances service life.">
         <h3>Rubber Lining</h3>
         <p>Protective linings to minimize wear and maximize lifespan.</p>
       </div>
-
     </div>
   </section>
-
-  <!-- Lightbox Popup -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-content">
-      <img src="" id="lightbox-img" alt="Popup Image" />
-      <h2 id="lightbox-title"></h2>
-      <p id="lightbox-desc"></p>
+  <div class=lightbox id=lightbox>
+    <div class=lightbox-content>
+      <img src="" id=lightbox-img alt="Popup Image">
+      <h2 id=lightbox-title></h2>
+      <p id=lightbox-desc></p>
     </div>
   </div>
-
-
-
-
-
-
-
-  <section id="projects" class="animate-section">
-    <h2 class="section-title">Our Projects</h2>
-
-    <div class="project-carousel">
-      <div class="project-track">
-        <div class="project-wrapper">
-          <div class="project-item">
-            <img src="images/chimney_project.webp" alt="200 MTS Chimney Tower" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+  <section id=projects class=animate-section>
+    <h2 class=section-title>Our Projects</h2>
+    <div class=project-carousel>
+      <div class=project-track>
+        <div class=project-wrapper>
+          <div class=project-item>
+            <img src=images/chimney_project.webp alt="200 MTS Chimney Tower" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>200 MTS Chimney Tower:</strong> Designed and installed for <em>Stee Art Pvt. Ltd.</em> using
               precision-engineered fabrication and corrosion-resistant coatings. The tower stands at 200 meters and
               handles extreme wind loads, chemical exposure, and continuous thermal stress.</p>
           </div>
-          <div class="project-item">
-            <img src="images/dairy_plant.webp" alt="Dairy Plant Galvanizing" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/dairy_plant.webp alt="Dairy Plant Galvanizing" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>Dairy Plant Galvanizing:</strong> Completed for <em>MilkPro Industries</em>, this project
               involved hot-dip galvanizing of process equipment, pipelines, and structural steel used in
               hygiene-sensitive environments with long-term resistance to dairy acids and cleaning agents.</p>
           </div>
-          <div class="project-item">
-            <img src="images/oil_tanks.webp" alt="ONGC Oil Tanks" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/oil_tanks.webp alt="ONGC Oil Tanks" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>ONGC Oil Tanks:</strong> Massive storage tanks protected for <em>ONGC Offshore Projects</em> with
               a blend of epoxy and metallized coatings. Designed to handle corrosive marine atmospheres and hydrocarbon
               storage, ensuring 15+ years of durability.</p>
           </div>
-          <div class="project-item">
-            <img src="images/petrochemical_equipment.webp" alt="Petrochemical Equipment" loading="lazy"
-              class="project-img" onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/petrochemical_equipment.webp alt="Petrochemical Equipment" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>Petrochemical Equipment:</strong> Executed for <em>ChemTech Ltd.</em>, our solution included
               advanced dual-layer epoxy coatings on heat exchangers, vessels, and reactors. The project demanded extreme
               chemical resistance and precise application inside confined areas.</p>
           </div>
-          <div class="project-item">
-            <img src="images/steel_bridges.webp" alt="Steel Bridges Protection" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/steel_bridges.webp alt="Steel Bridges Protection" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>Steel Bridges:</strong> Long-span bridge components treated with a 3-coat system including zinc
               primer, epoxy mid-coat, and polyurethane topcoat. The project tackled high humidity zones and was
               certified for a 25-year lifespan under coastal conditions.</p>
           </div>
-          <div class="project-item">
-            <img src="images/power_plant_piping.webp" alt="Power Plant Coatings" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/power_plant_piping.webp alt="Power Plant Coatings" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>Power Plant Piping:</strong> Delivered for <em>ThermalTech Energy</em>, we coated over 10,000
               meters of high-pressure piping with heat- and abrasion-resistant linings. Ensured performance under 600°C
               conditions with zero degradation across thermal cycles.</p>
           </div>
-          <div class="project-item">
-            <img src="images/chimney_project.webp" alt="200 MTS Chimney Tower" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/chimney_project.webp alt="200 MTS Chimney Tower" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>200 MTS Chimney Tower:</strong> Designed and installed for <em>Stee Art Pvt. Ltd.</em> using
               precision-engineered fabrication and corrosion-resistant coatings. The tower stands at 200 meters and
               handles extreme wind loads, chemical exposure, and continuous thermal stress.</p>
           </div>
-          <div class="project-item">
-            <img src="images/dairy_plant.webp" alt="Dairy Plant Galvanizing" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/dairy_plant.webp alt="Dairy Plant Galvanizing" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>Dairy Plant Galvanizing:</strong> Completed for <em>MilkPro Industries</em>, this project
               involved hot-dip galvanizing of process equipment, pipelines, and structural steel used in
               hygiene-sensitive environments with long-term resistance to dairy acids and cleaning agents.</p>
           </div>
-          <div class="project-item">
-            <img src="images/oil_tanks.webp" alt="ONGC Oil Tanks" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/oil_tanks.webp alt="ONGC Oil Tanks" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>ONGC Oil Tanks:</strong> Massive storage tanks protected for <em>ONGC Offshore Projects</em> with
               a blend of epoxy and metallized coatings. Designed to handle corrosive marine atmospheres and hydrocarbon
               storage, ensuring 15+ years of durability.</p>
           </div>
-          <div class="project-item">
-            <img src="images/petrochemical_equipment.webp" alt="Petrochemical Equipment" loading="lazy"
-              class="project-img" onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/petrochemical_equipment.webp alt="Petrochemical Equipment" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>Petrochemical Equipment:</strong> Executed for <em>ChemTech Ltd.</em>, our solution included
               advanced dual-layer epoxy coatings on heat exchangers, vessels, and reactors. The project demanded extreme
               chemical resistance and precise application inside confined areas.</p>
           </div>
-          <div class="project-item">
-            <img src="images/steel_bridges.webp" alt="Steel Bridges Protection" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/steel_bridges.webp alt="Steel Bridges Protection" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>Steel Bridges:</strong> Long-span bridge components treated with a 3-coat system including zinc
               primer, epoxy mid-coat, and polyurethane topcoat. The project tackled high humidity zones and was
               certified for a 25-year lifespan under coastal conditions.</p>
           </div>
-          <div class="project-item">
-            <img src="images/power_plant_piping.webp" alt="Power Plant Coatings" loading="lazy" class="project-img"
-              onclick="openProjectLightbox(this)">
+          <div class=project-item>
+            <img src=images/power_plant_piping.webp alt="Power Plant Coatings" loading=lazy class=project-img
+              onclick=openProjectLightbox(this)>
             <p><strong>Power Plant Piping:</strong> Delivered for <em>ThermalTech Energy</em>, we coated over 10,000
               meters of high-pressure piping with heat- and abrasion-resistant linings. Ensured performance under 600°C
               conditions with zero degradation across thermal cycles.</p>
@@ -909,96 +821,51 @@
       </div>
     </div>
   </section>
-
-
-
-
-
-
-  <div id="project-lightbox" class="lightbox" onclick="closeProjectLightbox()">
-    <img id="project-lightbox-img" src="" alt="Project Image">
+  <div id=project-lightbox class=lightbox onclick=closeProjectLightbox()>
+    <img id=project-lightbox-img src="" alt="Project Image">
   </div>
-
-
-
-  <section id="clients" class="animate-section" style="padding: 40px 20px;">
-    <h2 class="section-title">Our Clients</h2>
-    <div class="clients-grid">
-      <div class="client-logo">
-        <img src="images/adani_logo.webp" alt="Adani Group" loading="lazy" />
+  <section id=clients class=animate-section style="padding:40px 20px">
+    <h2 class=section-title>Our Clients</h2>
+    <div class=clients-grid>
+      <div class=client-logo>
+        <img src=images/adani_logo.webp alt="Adani Group" loading=lazy>
       </div>
-      <div class="client-logo">
-        <img src="images/ongc_logo.webp" alt="ONGC" loading="lazy" />
+      <div class=client-logo>
+        <img src=images/ongc_logo.webp alt=ONGC loading=lazy>
       </div>
-      <div class="client-logo">
-        <img src="images/lt_logo.webp" alt="L&T" loading="lazy" />
+      <div class=client-logo>
+        <img src=images/lt_logo.webp alt=L&T loading=lazy>
       </div>
-      <div class="client-logo">
-        <img src="images/reliance_logo.webp" alt="Reliance Industries" loading="lazy" />
+      <div class=client-logo>
+        <img src=images/reliance_logo.webp alt="Reliance Industries" loading=lazy>
       </div>
     </div>
   </section>
-
-
-  <section id="testimonials" class="animate-section">
+  <section id=testimonials class=animate-section>
     <h2>What Our Clients Say</h2>
-    <div class="cards">
-      <div class="testimonial">
-        <p>"The dedication and quality provided by CORRON<span class="logo-red">i</span>L CONTROL
-          have significantly improved the longevity and reliability of our equipment. Their professionalism is
-          unmatched." — <strong>Adani Group</strong></p>
+    <div class=cards>
+      <div class=testimonial>
+        <p>"The dedication and quality provided by CORRON<span class=logo-red>i</span>L CONTROL have significantly
+          improved the longevity and reliability of our equipment. Their professionalism is unmatched." — <strong>Adani
+            Group</strong></p>
       </div>
-      <div class="testimonial">
-        <p>"Working with CORRON<span class="logo-red">i</span>L CONTROL
-          was a seamless experience. Their technical knowledge and service execution are among the best in the
-          industry." — <strong>ONGC Ltd.</strong></p>
+      <div class=testimonial>
+        <p>"Working with CORRON<span class=logo-red>i</span>L CONTROL was a seamless experience. Their technical
+          knowledge and service execution are among the best in the industry." — <strong>ONGC Ltd.</strong></p>
       </div>
     </div>
-
   </section>
-
-  <section id="contact" class="animate-section">
+  <section id=contact class=animate-section>
     <h2>Contact Us</h2>
-    <p style="text-align:center;">Reach out for inquiries, quotes, or more information about our solutions.</p>
-    <form class="contact-form" id="contact-form" action="/api/contact">
-      <input type="text" id="name" name="name" placeholder="Your Name" required />
-      <input type="email" id="email" name="email" placeholder="Your Email" required />
-      <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+    <p style=text-align:center>Reach out for inquiries, quotes, or more information about our solutions.</p>
+    <form class=contact-form id=contact-form action=/api/contact>
+      <input id=name name=name placeholder="Your Name" required>
+      <input type=email id=email name=email placeholder="Your Email" required>
+      <textarea id=message name=message placeholder="Your Message" required></textarea>
+      <button type=submit>Send Message</button>
     </form>
-
-
-
-
-    <script>
-      document.getElementById('contact-form').addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const formData = {
-          name: this.name.value,
-          email: this.email.value,
-          message: this.message.value
-        };
-
-        try {
-          const res = await fetch('http://localhost:5000/api/contact', {
-
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-          });
-
-          const data = await res.json();
-          alert(data.message || 'Form submitted');
-          this.reset();
-        } catch (err) {
-          alert('❌ Submission failed. Check server is running.');
-        }
-      });
-    </script>
-
-
-    <div class="contact-info">
+    <script>document.getElementById("contact-form").addEventListener("submit", (async function (e) { e.preventDefault(); const t = { name: this.name.value, email: this.email.value, message: this.message.value }; try { const e = await fetch("http://localhost:5000/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(t) }), a = await e.json(); alert(a.message || "Form submitted"), this.reset() } catch (e) { alert("❌ Submission failed. Check server is running.") } }))</script>
+    <div class=contact-info>
       <h3>Contact Details</h3>
       <p><strong>Address:</strong> Plot No. 1/A, Sadbhav Industrial Park, Vibhag-2, Undrel Road, Dhamatvan, Ta. Daskroi,
         Dist. Ahmedabad-382435.</p>
@@ -1007,380 +874,31 @@
       <p><strong>Business Hours:</strong> Mon-Fri: 9 AM - 6 PM | Sat: 9 AM - 1 PM</p>
     </div>
   </section>
-
-
-
-
-
-
-  <script src="main.js" defer>
-    // Smooth Scroll Navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    // Smooth Scroll to Section
-    function smoothScrollTo(id) {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }
-
-    // Toggle Mobile Navigation
-    function toggleMenu() {
-      document.getElementById("navLinks").classList.toggle("open");
-    }
-
-    // Toggle Dark Mode
-    function toggleMode() {
-      document.body.classList.toggle("dark-mode");
-      localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-    }
-
-    // Load Theme from localStorage
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "dark") document.body.classList.add("dark-mode");
-    });
-
-    // Contact Form Submission Alert
-    document.getElementById("contact-form")?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Your message has been sent successfully. Thank you for reaching out!");
-      e.target.reset();
-    });
-
-
-    // Nav Shrink on Scroll Effect
-    window.addEventListener("scroll", () => {
-      const header = document.querySelector("header");
-      if (window.scrollY > 20) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    });
-
-    // ScrollSpy - Highlight active nav link while scrolling
-    const pageSections = document.querySelectorAll("section");
-    const menuLinks = document.querySelectorAll(".nav-link");
-
-    function activateNavLink() {
-      let currentSection = "";
-      pageSections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        if (window.scrollY >= sectionTop) {
-          currentSection = section.getAttribute("id");
-        }
-      });
-
-      menuLinks.forEach(link => {
-        link.classList.remove("active-link");
-        if (link.getAttribute("href") === `#${currentSection}`) {
-          link.classList.add("active-link");
-        }
-      });
-    }
-
-    window.addEventListener("scroll", activateNavLink);
-
-    // Back to Top Button
-    const backToTopBtn = document.getElementById("backToTopBtn");
-
-    window.addEventListener("scroll", () => {
-      backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    });
-
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-
-    // Scroll-to-top button visibility
-    window.onscroll = function () {
-      const btn = document.getElementById("scrollTopBtn");
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        btn.style.display = "block";
-      } else {
-        btn.style.display = "none";
-      }
-    };
-
-    // Back to Top Button
-    window.onscroll = function () {
-      document.getElementById("topBtn").style.display =
-        document.documentElement.scrollTop > 150 ? "block" : "none";
-    };
-
-    function topFunction() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-
-    window.addEventListener("load", () => {
-      document.getElementById("preloader").style.display = "none";
-    });
-
-
-  </script>
-
-  <script src="main.js" defer>
-    // Scroll animation for sections with fade-in effect
-    const sections = document.querySelectorAll(".animate-section");
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("fade-in");
-          entry.target.classList.remove("hidden"); // Reveal section
-          sectionObserver.unobserve(entry.target); // Animate only once
-        }
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach((section) => {
-      section.classList.add("hidden");
-      sectionObserver.observe(section);
-    });
-  </script>
-
-
-  <script src="main.js" defer>
-    document.getElementById('contact-form').addEventListener('submit', async function (e) {
-      e.preventDefault();
-
-      const name = this.name.value.trim();
-      const email = this.email.value.trim();
-      const message = this.message.value.trim();
-
-      try {
-        const response = await fetch('http://localhost:5000/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message }),
-        });
-
-        const result = await response.json();
-        if (result.success) {
-          alert('✅ Message sent successfully!');
-          this.reset(); // Clear form
-        } else {
-          alert('❌ Something went wrong. Please try again.');
-        }
-      } catch (err) {
-        alert('🚫 Failed to connect to server.');
-        console.error(err);
-      }
-    });
-  </script>
-
-  <!-- Lightbox Container -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Popup Image" id="lightbox-img" />
+  <script src=main.js
+    defer>function smoothScrollTo(e) { document.getElementById(e)?.scrollIntoView({ behavior: "smooth" }) } function toggleMenu() { document.getElementById("navLinks").classList.toggle("open") } function toggleMode() { document.body.classList.toggle("dark-mode"), localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light") } document.querySelectorAll('a[href^="#"]').forEach((e => { e.addEventListener("click", (function (e) { e.preventDefault(); const o = document.querySelector(this.getAttribute("href")); o && o.scrollIntoView({ behavior: "smooth" }) })) })), window.addEventListener("DOMContentLoaded", (() => { "dark" === localStorage.getItem("theme") && document.body.classList.add("dark-mode") })), document.getElementById("contact-form")?.addEventListener("submit", (e => { e.preventDefault(), alert("Your message has been sent successfully. Thank you for reaching out!"), e.target.reset() })), window.addEventListener("scroll", (() => { const e = document.querySelector("header"); window.scrollY > 20 ? e.classList.add("scrolled") : e.classList.remove("scrolled") })); const pageSections = document.querySelectorAll("section"), menuLinks = document.querySelectorAll(".nav-link"); function activateNavLink() { let e = ""; pageSections.forEach((o => { const t = o.offsetTop - 150; window.scrollY >= t && (e = o.getAttribute("id")) })), menuLinks.forEach((o => { o.classList.remove("active-link"), o.getAttribute("href") === `#${e}` && o.classList.add("active-link") })) } window.addEventListener("scroll", activateNavLink); const backToTopBtn = document.getElementById("backToTopBtn"); function scrollToTop() { window.scrollTo({ top: 0, behavior: "smooth" }) } function topFunction() { window.scrollTo({ top: 0, behavior: "smooth" }) } window.addEventListener("scroll", (() => { backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none" })), window.onscroll = function () { const e = document.getElementById("scrollTopBtn"); document.body.scrollTop > 300 || document.documentElement.scrollTop > 300 ? e.style.display = "block" : e.style.display = "none" }, window.onscroll = function () { document.getElementById("topBtn").style.display = document.documentElement.scrollTop > 150 ? "block" : "none" }, window.addEventListener("load", (() => { document.getElementById("preloader").style.display = "none" }))</script>
+  <script src=main.js
+    defer>const sections = document.querySelectorAll(".animate-section"), sectionObserver = new IntersectionObserver((e => { e.forEach((e => { e.isIntersecting && (e.target.classList.add("fade-in"), e.target.classList.remove("hidden"), sectionObserver.unobserve(e.target)) })) }), { threshold: .1 }); sections.forEach((e => { e.classList.add("hidden"), sectionObserver.observe(e) }))</script>
+  <script src=main.js
+    defer>document.getElementById("contact-form").addEventListener("submit", (async function (e) { e.preventDefault(); const t = this.name.value.trim(), a = this.email.value.trim(), s = this.message.value.trim(); try { const e = await fetch("http://localhost:5000/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: t, email: a, message: s }) }); (await e.json()).success ? (alert("✅ Message sent successfully!"), this.reset()) : alert("❌ Something went wrong. Please try again.") } catch (e) { alert("🚫 Failed to connect to server."), console.error(e) } }))</script>
+  <div class=lightbox id=lightbox>
+    <img src="" alt="Popup Image" id=lightbox-img>
   </div>
-
-  <script src="main.js" defer>
-
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const lightboxTitle = document.getElementById("lightbox-title");
-    const lightboxDesc = document.getElementById("lightbox-desc");
-
-    document.querySelectorAll(".service-img").forEach(img => {
-      img.addEventListener("click", () => {
-        lightboxImg.src = img.src;
-        lightboxTitle.textContent = img.dataset.title;
-        lightboxDesc.textContent = img.dataset.desc;
-        lightbox.style.display = "flex";
-      });
-    });
-
-    lightbox.addEventListener("click", () => {
-      lightbox.style.display = "none";
-      lightboxImg.src = "";
-      lightboxTitle.textContent = "";
-      lightboxDesc.textContent = "";
-    });
-  </script>
-
-  <script src="main.js" defer>
-    // ❌ Don't redeclare: const lightboxImg = document.getElementById("lightbox-img");
-    let scale = 1;
-
-    lightboxImg.addEventListener("wheel", function (e) {
-      e.preventDefault();
-
-      const scaleAmount = 0.1;
-      if (e.deltaY < 0) {
-        scale += scaleAmount;
-      } else {
-        scale = Math.max(scale - scaleAmount, 0.2);
-      }
-
-      lightboxImg.style.transform = `scale(${scale})`;
-    });
-
-
-    // Reset zoom on lightbox close
-    document.getElementById("lightbox").addEventListener("click", () => {
-      scale = 1;
-      lightboxImg.style.transform = "scale(1)";
-    });
-  </script>
-
-
-  <script src="main.js" defer>
-    let projectScale = 1;
-
-    function openProjectLightbox(img) {
-      const lightbox = document.getElementById("project-lightbox");
-      const lightboxImg = document.getElementById("project-lightbox-img");
-
-      lightbox.style.display = "flex";
-      lightboxImg.src = img.src;
-      lightboxImg.style.transform = "scale(1)";
-      projectScale = 1;
-    }
-
-    function closeProjectLightbox() {
-      const lightbox = document.getElementById("project-lightbox");
-      lightbox.style.display = "none";
-      projectScale = 1;
-    }
-
-    const projectLightboxImg = document.getElementById("project-lightbox-img");
-    projectLightboxImg.addEventListener("wheel", function (e) {
-      e.preventDefault();
-      const scaleStep = 0.1;
-      if (e.deltaY < 0) {
-        projectScale += scaleStep;
-      } else {
-        projectScale = Math.max(0.2, projectScale - scaleStep);
-      }
-      this.style.transform = `scale(${projectScale})`;
-    });
-
-
-  </script>
-
-  <script src="main.js" defer>
-    const wrapper = document.querySelector('.project-wrapper');
-    const items = document.querySelectorAll('.project-item');
-    const nextBtn = document.querySelector('.next-btn');
-    const prevBtn = document.querySelector('.prev-btn');
-    let index = 0;
-    const total = items.length;
-
-    function updateSlide() {
-      wrapper.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    nextBtn.addEventListener('click', () => {
-      index = (index + 1) % total;
-      updateSlide();
-    });
-
-    prevBtn.addEventListener('click', () => {
-      index = (index - 1 + total) % total;
-      updateSlide();
-    });
-
-    // Auto-slide
-    let autoSlide = setInterval(() => {
-      index = (index + 1) % total;
-      updateSlide();
-    }, 4000); // every 4 seconds
-
-    // Pause on hover
-    document.querySelector('.project-carousel').addEventListener('mouseenter', () => {
-      clearInterval(autoSlide);
-    });
-    document.querySelector('.project-carousel').addEventListener('mouseleave', () => {
-      autoSlide = setInterval(() => {
-        index = (index + 1) % total;
-        updateSlide();
-      }, 4000);
-    });
-  </script>
-
-
-  <script src="main.js" defer>
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-
-      // Get icon span
-      const icon = document.getElementById("darkModeIcon");
-
-      // Update icon based on mode
-      if (document.body.classList.contains("dark-mode")) {
-        icon.textContent = "🔆"; // Light mode icon (sun)
-      } else {
-        icon.textContent = "🌙"; // Dark mode icon (moon)
-      }
-    }
-  </script>
-
-
-
-
-
-
-
-  <script src="main.js" defer>
-    document.getElementById('contact-form').addEventListener('submit', async function (e) {
-      e.preventDefault();
-
-      const formData = {
-        name: this.name.value,
-        email: this.email.value,
-        message: this.message.value
-      };
-
-      try {
-        const res = await fetch('http://localhost:5000/api/contact', {
-
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        const data = await res.json();
-        alert(data.message || 'Form submitted!');
-        this.reset();
-      } catch (err) {
-        alert('❌ Submission failed. Check server is running.');
-      }
-    });
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
-
-
+  <script src=main.js
+    defer>const lightbox = document.getElementById("lightbox"), lightboxImg = document.getElementById("lightbox-img"), lightboxTitle = document.getElementById("lightbox-title"), lightboxDesc = document.getElementById("lightbox-desc"); document.querySelectorAll(".service-img").forEach((t => { t.addEventListener("click", (() => { lightboxImg.src = t.src, lightboxTitle.textContent = t.dataset.title, lightboxDesc.textContent = t.dataset.desc, lightbox.style.display = "flex" })) })), lightbox.addEventListener("click", (() => { lightbox.style.display = "none", lightboxImg.src = "", lightboxTitle.textContent = "", lightboxDesc.textContent = "" }))</script>
+  <script src=main.js
+    defer>let scale = 1; lightboxImg.addEventListener("wheel", (function (e) { e.preventDefault(); e.deltaY < 0 ? scale += .1 : scale = Math.max(scale - .1, .2), lightboxImg.style.transform = `scale(${scale})` })), document.getElementById("lightbox").addEventListener("click", (() => { scale = 1, lightboxImg.style.transform = "scale(1)" }))</script>
+  <script src=main.js
+    defer>let projectScale = 1; function openProjectLightbox(e) { const t = document.getElementById("project-lightbox"), o = document.getElementById("project-lightbox-img"); t.style.display = "flex", o.src = e.src, o.style.transform = "scale(1)", projectScale = 1 } function closeProjectLightbox() { document.getElementById("project-lightbox").style.display = "none", projectScale = 1 } const projectLightboxImg = document.getElementById("project-lightbox-img"); projectLightboxImg.addEventListener("wheel", (function (e) { e.preventDefault(); e.deltaY < 0 ? projectScale += .1 : projectScale = Math.max(.2, projectScale - .1), this.style.transform = `scale(${projectScale})` }))</script>
+  <script src=main.js
+    defer>const wrapper = document.querySelector(".project-wrapper"), items = document.querySelectorAll(".project-item"), nextBtn = document.querySelector(".next-btn"), prevBtn = document.querySelector(".prev-btn"); let index = 0; const total = items.length; function updateSlide() { wrapper.style.transform = `translateX(-${100 * index}%)` } nextBtn.addEventListener("click", (() => { index = (index + 1) % total, updateSlide() })), prevBtn.addEventListener("click", (() => { index = (index - 1 + total) % total, updateSlide() })); let autoSlide = setInterval((() => { index = (index + 1) % total, updateSlide() }), 4e3); document.querySelector(".project-carousel").addEventListener("mouseenter", (() => { clearInterval(autoSlide) })), document.querySelector(".project-carousel").addEventListener("mouseleave", (() => { autoSlide = setInterval((() => { index = (index + 1) % total, updateSlide() }), 4e3) }))</script>
+  <script src=main.js
+    defer>function toggleDarkMode() { document.body.classList.toggle("dark-mode"); const t = document.getElementById("darkModeIcon"); document.body.classList.contains("dark-mode") ? t.textContent = "🔆" : t.textContent = "🌙" }</script>
+  <script src=main.js
+    defer>document.getElementById("contact-form").addEventListener("submit", (async function (e) { e.preventDefault(); const t = { name: this.name.value, email: this.email.value, message: this.message.value }; try { const e = await fetch("http://localhost:5000/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(t) }), a = await e.json(); alert(a.message || "Form submitted!"), this.reset() } catch (e) { alert("❌ Submission failed. Check server is running.") } }))</script>
+  <button onclick=topFunction() id=topBtn title="Go to top">↑</button>
   <footer>
-    <span class="logo">© 2025 CORRON<span class="logo-red">i</span> L CONTROL</span>. All Rights Reserved.
+    <span class=logo>© 2025 CORRON<span class=logo-red>i</span> L CONTROL</span>. All Rights Reserved.
   </footer>
-
 </body>
 
 </html>
