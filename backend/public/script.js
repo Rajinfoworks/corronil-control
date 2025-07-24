@@ -1,4 +1,4 @@
-// --- BACKEND CODE (Node.js) ---
+// === BACKEND: Only run this on Node.js ===
 if (typeof require !== 'undefined' && typeof module !== 'undefined') {
   const express = require('express');
   const mongoose = require('mongoose');
@@ -6,21 +6,20 @@ if (typeof require !== 'undefined' && typeof module !== 'undefined') {
   const path = require('path');
 
   const app = express();
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 3000;
 
   app.use(cors());
   app.use(express.json());
   app.use(express.static(path.join(__dirname, 'public')));
 
-  // MongoDB connection
   mongoose.connect('mongodb://127.0.0.1:27017/corronilDB')
-    .then(() => console.log('✅ MongoDB Connected'))
-    .catch(err => console.error('❌ MongoDB Error:', err));
+    .then(() => console.log('✅ MongoDB connected'))
+    .catch(err => console.error('❌ MongoDB error:', err));
 
   const Contact = mongoose.model('Contact', new mongoose.Schema({
     name: String,
     email: String,
-    message: String
+    message: String,
   }));
 
   app.post('/api/contact', async (req, res) => {
@@ -42,25 +41,26 @@ if (typeof require !== 'undefined' && typeof module !== 'undefined') {
   });
 }
 
-// --- FRONTEND CODE (Browser) ---
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contact-form");
-  if (!form) return;
+// === FRONTEND: Only runs in the browser ===
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, message }),
+      const result = await response.json();
+      alert(result.success ? "✅ Message sent!" : "❌ Error. Try again.");
     });
-
-    const result = await response.json();
-    alert(result.success ? "Message sent!" : "Failed to send message.");
   });
-});
+}
