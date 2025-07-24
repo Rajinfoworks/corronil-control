@@ -1,33 +1,66 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const contactRoutes = require('../routes/contact');
-const path = require('path');
-const cors = require('cors');
+// --- BACKEND CODE (Node.js) ---
+if (typeof require !== 'undefined' && typeof module !== 'undefined') {
+  const express = require('express');
+  const mongoose = require('mongoose');
+  const cors = require('cors');
+  const path = require('path');
 
-dotenv.config();
+  const app = express();
+  const PORT = process.env.PORT || 5000;
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+  app.use(cors());
+  app.use(express.json());
+  app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+  // MongoDB connection
+  mongoose.connect('mongodb://127.0.0.1:27017/corronilDB')
+    .then(() => console.log('✅ MongoDB Connected'))
+    .catch(err => console.error('❌ MongoDB Error:', err));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
-});
+  const Contact = mongoose.model('Contact', new mongoose.Schema({
+    name: String,
+    email: String,
+    message: String
+  }));
 
-// API Route
-app.use('/api/contact', contactRoutes);
+  app.post('/api/contact', async (req, res) => {
+    try {
+      const entry = new Contact(req.body);
+      await entry.save();
+      res.status(200).json({ success: true });
+    } catch {
+      res.status(500).json({ success: false });
+    }
+  });
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ DB Error:', err));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
+  });
+}
+
+// --- FRONTEND CODE (Browser) ---
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    const result = await response.json();
+    alert(result.success ? "Message sent!" : "Failed to send message.");
+  });
 });
