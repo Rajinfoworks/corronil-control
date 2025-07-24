@@ -895,6 +895,7 @@
     defer>function toggleDarkMode() { document.body.classList.toggle("dark-mode"); const t = document.getElementById("darkModeIcon"); document.body.classList.contains("dark-mode") ? t.textContent = "🔆" : t.textContent = "🌙" }</script>
   <script src=main.js
     defer>document.getElementById("contact-form").addEventListener("submit", (async function (e) { e.preventDefault(); const t = { name: this.name.value, email: this.email.value, message: this.message.value }; try { const e = await fetch("http://localhost:5000/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(t) }), a = await e.json(); alert(a.message || "Form submitted!"), this.reset() } catch (e) { alert("❌ Submission failed. Check server is running.") } }))</script>
+    <script src="script.js"></script>
   <button onclick=topFunction() id=topBtn title="Go to top">↑</button>
   <footer>
     <span class=logo>© 2025 CORRON<span class=logo-red>i</span> L CONTROL</span>. All Rights Reserved.
