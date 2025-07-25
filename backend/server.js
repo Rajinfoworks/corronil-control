@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
-mongoose.connect('process.env.MONGO_URI', {
+mongoose.connect('mongodb+srv://rajinfoworks:Raj.infoworks16@cluster0.vcjlnsv.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
