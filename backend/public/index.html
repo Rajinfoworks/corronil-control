@@ -29,7 +29,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel=stylesheet>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="icon" type="image/png" href="favicon.png">
-
+<link rel="stylesheet" href="style.css">
   <style>
     :root {
       --bg-light: #ffffff;
@@ -896,6 +896,7 @@
     defer>document.getElementById("contact-form").addEventListener("submit", (async function (e) { e.preventDefault(); const t = { name: this.name.value, email: this.email.value, message: this.message.value }; try { const e = await fetch("http://localhost:5000/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(t) }), a = await e.json(); alert(a.message || "Form submitted!"), this.reset() } catch (e) { alert("❌ Submission failed. Check server is running.") } }))</script>
   <script src="script.js"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="script.js" defer></script>
   <button onclick=topFunction() id=topBtn title="Go to top">↑</button>
   <footer>
     <span class=logo>© 2025 CORRON<span class=logo-red>i</span> L CONTROL</span>. All Rights Reserved.
