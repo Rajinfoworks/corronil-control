@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
-mongoose.connect('mongodb://127.0.0.1:27017/corronilDB', {
+mongoose.connect('mongodb+srv://rajinfoworks:Raj.infoworks16@cluster0.vcjlnsv.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
