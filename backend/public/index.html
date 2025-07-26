@@ -872,18 +872,298 @@
       <p><strong>Business Hours:</strong> Mon-Fri: 9 AM - 6 PM | Sat: 9 AM - 1 PM</p>
     </div>
   </section>
-  <script>function smoothScrollTo(e) { document.getElementById(e)?.scrollIntoView({ behavior: "smooth" }) } function toggleMenu() { document.getElementById("navLinks").classList.toggle("open") } function toggleMode() { document.body.classList.toggle("dark-mode"), localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light") } document.querySelectorAll('a[href^="#"]').forEach((e => { e.addEventListener("click", (function (e) { e.preventDefault(); const o = document.querySelector(this.getAttribute("href")); o && o.scrollIntoView({ behavior: "smooth" }) })) })), window.addEventListener("DOMContentLoaded", (() => { "dark" === localStorage.getItem("theme") && document.body.classList.add("dark-mode") })), document.getElementById("contact-form")?.addEventListener("submit", (e => { e.preventDefault(), alert("Your message has been sent successfully. Thank you for reaching out!"), e.target.reset() })), window.addEventListener("scroll", (() => { const e = document.querySelector("header"); window.scrollY > 20 ? e.classList.add("scrolled") : e.classList.remove("scrolled") })); const pageSections = document.querySelectorAll("section"), menuLinks = document.querySelectorAll(".nav-link"); function activateNavLink() { let e = ""; pageSections.forEach((o => { const t = o.offsetTop - 150; window.scrollY >= t && (e = o.getAttribute("id")) })), menuLinks.forEach((o => { o.classList.remove("active-link"), o.getAttribute("href") === `#${e}` && o.classList.add("active-link") })) } window.addEventListener("scroll", activateNavLink); const backToTopBtn = document.getElementById("backToTopBtn"); function scrollToTop() { window.scrollTo({ top: 0, behavior: "smooth" }) } function topFunction() { window.scrollTo({ top: 0, behavior: "smooth" }) } window.addEventListener("scroll", (() => { backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none" })), window.onscroll = function () { const e = document.getElementById("scrollTopBtn"); document.body.scrollTop > 300 || document.documentElement.scrollTop > 300 ? e.style.display = "block" : e.style.display = "none" }, window.onscroll = function () { document.getElementById("topBtn").style.display = document.documentElement.scrollTop > 150 ? "block" : "none" }, window.addEventListener("load", (() => { document.getElementById("preloader").style.display = "none" }))</script>
-  <script>const sections = document.querySelectorAll(".animate-section"), sectionObserver = new IntersectionObserver((e => { e.forEach((e => { e.isIntersecting && (e.target.classList.add("fade-in"), e.target.classList.remove("hidden"), sectionObserver.unobserve(e.target)) })) }), { threshold: .1 }); sections.forEach((e => { e.classList.add("hidden"), sectionObserver.observe(e) }))</script>
-  <script>document.getElementById("contact-form").addEventListener("submit", (async function (e) { e.preventDefault(); const t = this.name.value.trim(), a = this.email.value.trim(), s = this.message.value.trim(); try { const e = await fetch("http://localhost:5000/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: t, email: a, message: s }) }); (await e.json()).success ? (alert("✅ Message sent successfully!"), this.reset()) : alert("❌ Something went wrong. Please try again.") } catch (e) { alert("🚫 Failed to connect to server."), console.error(e) } }))</script>
+  
   <div class=lightbox id=lightbox-1>
     <img src=image.jpg alt="Popup Image" id=lightbox-img-1>
   </div>
-  <script>const lightbox = document.getElementById("lightbox"), lightboxImg = document.getElementById("lightbox-img"), lightboxTitle = document.getElementById("lightbox-title"), lightboxDesc = document.getElementById("lightbox-desc"); document.querySelectorAll(".service-img").forEach((t => { t.addEventListener("click", (() => { lightboxImg.src = t.src, lightboxTitle.textContent = t.dataset.title, lightboxDesc.textContent = t.dataset.desc, lightbox.style.display = "flex" })) })), lightbox.addEventListener("click", (() => { lightbox.style.display = "none", lightboxImg.src = "", lightboxTitle.textContent = "", lightboxDesc.textContent = "" }))</script>
-  <script>let scale = 1; lightboxImg.addEventListener("wheel", (function (e) { e.preventDefault(); e.deltaY < 0 ? scale += .1 : scale = Math.max(scale - .1, .2), lightboxImg.style.transform = `scale(${scale})` })), document.getElementById("lightbox").addEventListener("click", (() => { scale = 1, lightboxImg.style.transform = "scale(1)" }))</script>
-  <script>let projectScale = 1; function openProjectLightbox(e) { const t = document.getElementById("project-lightbox"), o = document.getElementById("project-lightbox-img"); t.style.display = "flex", o.src = e.src, o.style.transform = "scale(1)", projectScale = 1 } function closeProjectLightbox() { document.getElementById("project-lightbox").style.display = "none", projectScale = 1 } const projectLightboxImg = document.getElementById("project-lightbox-img"); projectLightboxImg.addEventListener("wheel", (function (e) { e.preventDefault(); e.deltaY < 0 ? projectScale += .1 : projectScale = Math.max(.2, projectScale - .1), this.style.transform = `scale(${projectScale})` }))</script>
-  <script>const wrapper = document.querySelector(".project-wrapper"), items = document.querySelectorAll(".project-item"), nextBtn = document.querySelector(".next-btn"), prevBtn = document.querySelector(".prev-btn"); let index = 0; const total = items.length; function updateSlide() { wrapper.style.transform = `translateX(-${100 * index}%)` } nextBtn.addEventListener("click", (() => { index = (index + 1) % total, updateSlide() })), prevBtn.addEventListener("click", (() => { index = (index - 1 + total) % total, updateSlide() })); let autoSlide = setInterval((() => { index = (index + 1) % total, updateSlide() }), 4e3); document.querySelector(".project-carousel").addEventListener("mouseenter", (() => { clearInterval(autoSlide) })), document.querySelector(".project-carousel").addEventListener("mouseleave", (() => { autoSlide = setInterval((() => { index = (index + 1) % total, updateSlide() }), 4e3) }))</script>
-  <script>function toggleDarkMode() { document.body.classList.toggle("dark-mode"); const t = document.getElementById("darkModeIcon"); document.body.classList.contains("dark-mode") ? t.textContent = "🔆" : t.textContent = "🌙" }</script>
-  <script>document.getElementById("contact-form").addEventListener("submit", (async function (e) { e.preventDefault(); const t = { name: this.name.value, email: this.email.value, message: this.message.value }; try { const e = await fetch("http://localhost:5000/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(t) }), a = await e.json(); alert(a.message || "Form submitted!"), this.reset() } catch (e) { alert("❌ Submission failed. Check server is running.") } }))</script>
+  <script>
+  const lightbox = document.getElementById("lightbox"),
+        lightboxImg = document.getElementById("lightbox-img"),
+        lightboxTitle = document.getElementById("lightbox-title"),
+        lightboxDesc = document.getElementById("lightbox-desc");
+
+  document.querySelectorAll(".service-img").forEach(t => {
+    t.addEventListener("click", () => {
+      lightboxImg.src = t.src;
+      lightboxTitle.textContent = t.dataset.title;
+      lightboxDesc.textContent = t.dataset.desc;
+      lightbox.style.display = "flex";
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+    lightboxImg.src = "";
+    lightboxTitle.textContent = "";
+    lightboxDesc.textContent = "";
+  });
+</script>
+
+<script>
+  let scale = 1;
+
+  lightboxImg.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      scale += 0.1;
+    } else {
+      scale = Math.max(scale - 0.1, 0.2);
+    }
+    lightboxImg.style.transform = `scale(${scale})`;
+  });
+
+  document.getElementById("lightbox").addEventListener("click", () => {
+    scale = 1;
+    lightboxImg.style.transform = "scale(1)";
+  });
+</script>
+
+<script>
+  let projectScale = 1;
+
+  function openProjectLightbox(e) {
+    const t = document.getElementById("project-lightbox"),
+          o = document.getElementById("project-lightbox-img");
+    t.style.display = "flex";
+    o.src = e.src;
+    o.style.transform = "scale(1)";
+    projectScale = 1;
+  }
+
+  function closeProjectLightbox() {
+    document.getElementById("project-lightbox").style.display = "none";
+    projectScale = 1;
+  }
+
+  const projectLightboxImg = document.getElementById("project-lightbox-img");
+
+  projectLightboxImg.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      projectScale += 0.1;
+    } else {
+      projectScale = Math.max(0.2, projectScale - 0.1);
+    }
+    this.style.transform = `scale(${projectScale})`;
+  });
+</script>
+
+<script>
+  const wrapper = document.querySelector(".project-wrapper"),
+        items = document.querySelectorAll(".project-item"),
+        nextBtn = document.querySelector(".next-btn"),
+        prevBtn = document.querySelector(".prev-btn");
+
+  let index = 0;
+  const total = items.length;
+
+  function updateSlide() {
+    wrapper.style.transform = `translateX(-${100 * index}%)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % total;
+    updateSlide();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + total) % total;
+    updateSlide();
+  });
+
+  let autoSlide = setInterval(() => {
+    index = (index + 1) % total;
+    updateSlide();
+  }, 4000);
+
+  document.querySelector(".project-carousel").addEventListener("mouseenter", () => {
+    clearInterval(autoSlide);
+  });
+
+  document.querySelector(".project-carousel").addEventListener("mouseleave", () => {
+    autoSlide = setInterval(() => {
+      index = (index + 1) % total;
+      updateSlide();
+    }, 4000);
+  });
+</script>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    const t = document.getElementById("darkModeIcon");
+    document.body.classList.contains("dark-mode")
+      ? t.textContent = "🔆"
+      : t.textContent = "🌙";
+  }
+</script>
+
+<script>
+  document.getElementById("contact-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const t = {
+      name: this.name.value,
+      email: this.email.value,
+      message: this.message.value
+    };
+
+    try {
+      const e = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(t)
+      });
+
+      const a = await e.json();
+      alert(a.message || "Form submitted!");
+      this.reset();
+    } catch (e) {
+      alert("❌ Submission failed. Check server is running.");
+    }
+  });
+</script>
+
+  
+  <script>
+  function smoothScrollTo(e) {
+    document.getElementById(e)?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("open");
+  }
+
+  function toggleMode() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(e => {
+    e.addEventListener("click", function (e) {
+      e.preventDefault();
+      const o = document.querySelector(this.getAttribute("href"));
+      o && o.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  });
+
+  document.getElementById("contact-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Your message has been sent successfully. Thank you for reaching out!");
+    e.target.reset();
+  });
+
+  window.addEventListener("scroll", () => {
+    const e = document.querySelector("header");
+    window.scrollY > 20 ? e.classList.add("scrolled") : e.classList.remove("scrolled");
+  });
+
+  const pageSections = document.querySelectorAll("section"),
+        menuLinks = document.querySelectorAll(".nav-link");
+
+  function activateNavLink() {
+    let e = "";
+    pageSections.forEach(o => {
+      const t = o.offsetTop - 150;
+      if (window.scrollY >= t) {
+        e = o.getAttribute("id");
+      }
+    });
+
+    menuLinks.forEach(o => {
+      o.classList.remove("active-link");
+      if (o.getAttribute("href") === `#${e}`) {
+        o.classList.add("active-link");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", activateNavLink);
+
+  const backToTopBtn = document.getElementById("backToTopBtn");
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function topFunction() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  window.addEventListener("scroll", () => {
+    backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  window.onscroll = function () {
+    const e = document.getElementById("scrollTopBtn");
+    document.body.scrollTop > 300 || document.documentElement.scrollTop > 300
+      ? e.style.display = "block"
+      : e.style.display = "none";
+  };
+
+  window.onscroll = function () {
+    document.getElementById("topBtn").style.display =
+      document.documentElement.scrollTop > 150 ? "block" : "none";
+  };
+
+  window.addEventListener("load", () => {
+    document.getElementById("preloader").style.display = "none";
+  });
+</script>
+
+<script>
+  const sections = document.querySelectorAll(".animate-section"),
+        sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("fade-in");
+        entry.target.classList.remove("hidden");
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach((section) => {
+    section.classList.add("hidden");
+    sectionObserver.observe(section);
+  });
+</script>
+
+<script>
+  document.getElementById("contact-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const t = this.name.value.trim(),
+          a = this.email.value.trim(),
+          s = this.message.value.trim();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: t, email: a, message: s })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("✅ Message sent successfully!");
+        this.reset();
+      } else {
+        alert("❌ Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("🚫 Failed to connect to server.");
+      console.error(error);
+    }
+  });
+</script>
+
   <button onclick=topFunction() id=topBtn title="Go to top">↑</button>
   <footer>
     <span class=logo>© 2025 CORRON<span class=logo-red>i</span> L CONTROL</span>. All Rights Reserved.
