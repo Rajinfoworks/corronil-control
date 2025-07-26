@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static frontend files from /public
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'backend/public')));
 
 // MongoDB Connection
 mongoose.connect('mongodb+srv://rajinfoworks:Raj.infoworks16@cluster0.vcjlnsv.mongodb.net/corronilcontrol?retryWrites=true&w=majority', {
@@ -44,7 +44,7 @@ app.post('/api/contact', async (req, res) => {
 
 // Catch-all: serve index.html for frontend routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'backend/public', 'index.html'));
 });
 
 // Start Server
