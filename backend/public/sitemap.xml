@@ -1,29 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
-    <loc>https://www.corronilcontrol.com/</loc>
+    <loc>http://localhost:5000/</loc>
     <priority>1.00</priority>
   </url>
 
+  <!-- Sections -->
   <url>
-    <loc>https://www.corronilcontrol.com/#about</loc>
+    <loc>http://localhost:5000/#home</loc>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>http://localhost:5000/#about</loc>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>http://localhost:5000/#services</loc>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>http://localhost:5000/#projects</loc>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>http://localhost:5000/#clients</loc>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://www.corronilcontrol.com/#services</loc>
+    <loc>http://localhost:5000/#testimonials</loc>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://www.corronilcontrol.com/#projects</loc>
-    <priority>0.70</priority>
+    <loc>http://localhost:5000/#contact</loc>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Additional pages or static content if any -->
+  <url>
+    <loc>http://localhost:5000/sitemap.xml</loc>
+    <priority>0.40</priority>
   </url>
 
   <url>
-    <loc>https://www.corronilcontrol.com/#contact</loc>
-    <priority>0.70</priority>
+    <loc>http://localhost:5000/robots.txt</loc>
+    <priority>0.30</priority>
   </url>
 
 </urlset>
