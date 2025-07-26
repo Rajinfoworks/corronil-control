@@ -3,54 +3,54 @@
 
   <!-- Homepage -->
   <url>
-    <loc>http://localhost:5000/</loc>
+    <loc>https://www.corronilcontrol.com/</loc>
     <priority>1.00</priority>
   </url>
 
   <!-- Sections -->
   <url>
-    <loc>http://localhost:5000/#home</loc>
+    <loc>https://www.corronilcontrol.com/#home</loc>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>http://localhost:5000/#about</loc>
+    <loc>https://www.corronilcontrol.com/#about</loc>
     <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>http://localhost:5000/#services</loc>
+    <loc>https://www.corronilcontrol.com/#services</loc>
     <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>http://localhost:5000/#projects</loc>
+    <loc>https://www.corronilcontrol.com/#projects</loc>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>http://localhost:5000/#clients</loc>
+    <loc>https://www.corronilcontrol.com/#clients</loc>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>http://localhost:5000/#testimonials</loc>
+    <loc>https://www.corronilcontrol.com/#testimonials</loc>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>http://localhost:5000/#contact</loc>
+    <loc>https://www.corronilcontrol.com/#contact</loc>
     <priority>0.85</priority>
   </url>
 
   <!-- Additional pages or static content if any -->
   <url>
-    <loc>http://localhost:5000/sitemap.xml</loc>
+    <loc>https://www.corronilcontrol.com/sitemap.xml</loc>
     <priority>0.40</priority>
   </url>
 
   <url>
-    <loc>http://localhost:5000/robots.txt</loc>
+    <loc>https://www.corronilcontrol.com/robots.txt</loc>
     <priority>0.30</priority>
   </url>
 
