@@ -11,11 +11,12 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'backend/public')));
 
+// Serve static frontend files from /public
+app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://rajinfoworks:Raj.infoworks16@cluster0.vcjlnsv.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://rajinfoworks:Raj.infoworks16@cluster0.vcjlnsv.mongodb.net/corronilcontrol?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -41,7 +42,7 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Catch-all Route: Serve index.html for SPA routes
+// Catch-all: serve index.html for frontend routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -50,6 +51,3 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
-
-
-
