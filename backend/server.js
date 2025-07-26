@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static frontend files from /public
-app.use(express.static(path.join(__dirname, 'backend/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
 mongoose.connect('mongodb+srv://rajinfoworks:Raj.infoworks16@cluster0.vcjlnsv.mongodb.net/corronilcontrol?retryWrites=true&w=majority', {
