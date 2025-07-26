@@ -44,7 +44,7 @@ app.post('/api/contact', async (req, res) => {
 
 // Catch-all: serve index.html for frontend routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'backend/public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'backend' , 'public', 'index.html'));
 });
 
 // Start Server
