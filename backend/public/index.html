@@ -23,7 +23,6 @@
   <meta property="og:description"
     content="Expert surface solutions: Powder Coating, Sand Blasting, Epoxy Painting, Zinc Spray, Metallizing, Rubber Lining." />
   <meta property="og:image" content="https://www.corronilcontrol.com/images/favicon.ico.jpg" />
-  
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
@@ -36,17 +35,9 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpg" href="images/favicon.ico.jpg" />
 
-
-  <title>CORRON<span class="logo-red">i</span>L CONTROL
-  </title>
-
-
-
-
+  <title>CORRON<span class="logo-red">i</span>L CONTROL</title>
 
   <link rel="stylesheet" href="style.css" />
-
-
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -106,8 +97,6 @@
       border-bottom: 2px solid var(--highlight);
     }
 
-
-
     #topBtn {
       position: fixed;
       bottom: 25px;
@@ -133,8 +122,6 @@
       padding: 0;
       overflow-x: hidden;
     }
-
-
 
     .logo-slider {
       overflow: hidden;
@@ -177,7 +164,6 @@
       }
     }
 
-
     #topBtn {
       display: none;
       position: fixed;
@@ -199,8 +185,6 @@
       background-color: #ff4d4d;
     }
 
-
-
     #whatsappBtn {
       position: fixed;
       bottom: 90px;
@@ -214,7 +198,6 @@
       width: 100%;
       height: auto;
     }
-
 
     /* Simple bounce animation */
     @keyframes bounce {
@@ -249,8 +232,6 @@
     #scrollTopBtn:hover {
       background-color: var(--accent);
     }
-
-
 
     nav {
       position: fixed;
@@ -356,7 +337,6 @@
       transform: translateY(0);
     }
 
-
     h1,
     h2,
     h3 {
@@ -435,8 +415,6 @@
     .hero button:hover {
       background: var(--highlight);
     }
-
-
 
     @keyframes bounceIn {
       0% {
@@ -576,8 +554,6 @@
       background: var(--bg-card-dark);
     }
 
-
-
     @media (max-width: 768px) {
       .nav-toggle {
         display: block;
@@ -679,7 +655,6 @@
     <div class="spinner"></div>
   </div>
 
-
   <nav>
     <a class="nav-logo" href="#home">CORRON<span class="logo-red">i</span>L CONTROL</a>
     <div class="nav-toggle" onclick="toggleMenu()">☰</div>
@@ -693,16 +668,11 @@
 
     </div>
 
-
-
-
-
     <button id="darkModeToggle" onclick="toggleDarkMode()" class="dark-toggle-btn">
       <span id="darkModeIcon">🌙</span>
     </button>
 
   </nav>
-
 
   <section id="home" class="hero animate-section">
     <div class="overlay"></div>
@@ -711,7 +681,6 @@
     <p>Setting new standards for durability, performance, and corrosion control across diverse industries worldwide.</p>
     <button onclick="smoothScrollTo('about')">Discover More</button>
   </section>
-
 
   <section id="about" class="animate-section">
     <h2>About CORRON<span class="logo-red">i</span>L CONTROL</h2>
@@ -811,17 +780,11 @@
   <!-- Lightbox Popup -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
-      <img src="image.jpg" id="lightbox-img" alt="Popup Image" />
+      <img src="images/favicon.ico.ico" id="lightbox-img" alt="Popup Image" />
       <h2 id="lightbox-title"></h2>
       <p id="lightbox-desc"></p>
     </div>
   </div>
-
-
-
-
-
-
 
   <section id="projects" class="animate-section">
     <h2 class="section-title">Our Projects</h2>
@@ -876,16 +839,9 @@
     </div>
   </section>
 
-
-
-
-
-
   <div id="project-lightbox" class="lightbox" onclick="closeProjectLightbox()">
-    <img id="project-lightbox-img" src="image.jpg" alt="Project Image">
+    <img id="project-lightbox-img" src="images/favicon.ico.ico" alt="Project Image">
   </div>
-
-
 
   <section id="clients" class="animate-section" style="padding: 40px 20px;">
     <h2 class="section-title">Our Clients</h2>
@@ -904,7 +860,6 @@
       </div>
     </div>
   </section>
-
 
   <section id="testimonials" class="animate-section">
     <h2>What Our Clients Say</h2>
@@ -933,9 +888,6 @@
       <button type="submit">Send Message</button>
     </form>
 
-
-
-
     <script>
       document.getElementById('contact-form').addEventListener('submit', async function (e) {
         e.preventDefault();
@@ -963,7 +915,6 @@
       });
     </script>
 
-
     <div class="contact-info">
       <h3>Contact Details</h3>
       <p><strong>Address:</strong> Plot No. 1/A, Sadbhav Industrial Park, Vibhag-2, Undrel Road, Dhamatvan, Ta. Daskroi,
@@ -973,11 +924,6 @@
       <p><strong>Business Hours:</strong> Mon-Fri: 9 AM - 6 PM | Sat: 9 AM - 1 PM</p>
     </div>
   </section>
-
-
-
-
-
 
   <script>
     // Smooth Scroll Navigation
@@ -1020,7 +966,6 @@
       alert("Your message has been sent successfully. Thank you for reaching out!");
       e.target.reset();
     });
-
 
     // Nav Shrink on Scroll Effect
     window.addEventListener("scroll", () => {
@@ -1096,7 +1041,6 @@
       document.getElementById("preloader").style.display = "none";
     });
 
-
   </script>
 
   <script>
@@ -1118,7 +1062,6 @@
       sectionObserver.observe(section);
     });
   </script>
-
 
   <script>
     document.getElementById('contact-form').addEventListener('submit', async function (e) {
@@ -1195,14 +1138,12 @@
       lightboxImg.style.transform = `scale(${scale})`;
     });
 
-
     // Reset zoom on lightbox close
     document.getElementById("lightbox").addEventListener("click", () => {
       scale = 1;
       lightboxImg.style.transform = "scale(1)";
     });
   </script>
-
 
   <script>
     let projectScale = 1;
@@ -1234,7 +1175,6 @@
       }
       this.style.transform = `scale(${projectScale})`;
     });
-
 
   </script>
 
@@ -1278,7 +1218,6 @@
     });
   </script>
 
-
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
@@ -1294,12 +1233,6 @@
       }
     }
   </script>
-
-
-
-
-
-
 
   <script>
     document.getElementById('contact-form').addEventListener('submit', async function (e) {
@@ -1328,20 +1261,9 @@
     });
   </script>
 
-
-
-
-
-
-
-
-
-
-
-
+  <script src="script.js" defer></script>
 
   <button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
-
 
   <footer>
     <span class="logo">© 2025 CORRON<span class="logo-red">i</span>L CONTROL</span>. All Rights Reserved.
