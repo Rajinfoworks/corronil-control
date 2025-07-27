@@ -381,7 +381,7 @@ footer .logo {
 
 body.dark-mode footer::after,
 footer::after {
-  content: "Raj<span class="logo-red">i</span>nfoworks";
+  content: "<span class="logo">Raj<span class="logo-red">i</span>nfoworks</span>.";
   display: block;
   font-weight: 600;
   margin-top: .5rem
