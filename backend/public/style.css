@@ -381,7 +381,7 @@ footer .logo {
 
 body.dark-mode footer::after,
 footer::after {
-  content: " Site developed by Rajinfoworks";
+  content: "Raj<span class="logo-red">i</span>nfoworks";
   display: block;
   font-weight: 600;
   margin-top: .5rem
