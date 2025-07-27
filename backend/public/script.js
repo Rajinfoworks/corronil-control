@@ -87,6 +87,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function smoothScrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
+window.addEventListener('scroll', myFunc, { passive: true });
 
 // ===== Toggle Mobile Menu =====
 function toggleMenu() {
