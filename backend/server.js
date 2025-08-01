@@ -1,58 +1,58 @@
-// --- BACKEND CODE (Node.js) ---
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
-// App setup
+// Initialize app
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-// Serve static frontend files from /public
 app.use(express.static(path.join(__dirname, 'public')));
 
-// MongoDB Connection
-mongoose.connect('mongodb+srv://rajinfoworks:Raj.infoworks16@cluster0.vcjlnsv.mongodb.net/corronilcontrol?retryWrites=true&w=majority', {
+// MongoDB connection
+mongoose.connect('your_mongodb_atlas_connection_url', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('✅ MongoDB Connected'))
-.catch(err => console.error('❌ MongoDB Connection Error:', err));
+  useUnifiedTopology: true,
+}).then(() => console.log('✅ Connected to MongoDB'))
+  .catch((err) => console.error('❌ MongoDB connection failed:', err));
 
-// Mongoose Model
+// Mongoose Schema
 const Contact = mongoose.model('Contact', new mongoose.Schema({
   name: String,
   email: String,
-  message: String
+  message: String,
 }));
 
-// API Route: POST contact form data
+// API Route
 app.post('/api/contact', async (req, res) => {
+  const { name, email, message } = req.body;
+
   try {
-    const entry = new Contact(req.body);
-    await entry.save();
-    res.status(200).json({ success: true });
+    await Contact.create({ name, email, message });
+    res.json({ success: true, message: '✅ Message received!' });
   } catch (err) {
-    console.error('❌ Error saving contact:', err);
-    res.status(500).json({ success: false });
+    console.error('❌ Error saving message:', err);
+    res.status(500).json({ success: false, message: '❌ Error saving message' });
   }
 });
+
+// Serve static frontend files from /public
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Catch-all: serve index.html for frontend routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
-
-// Fallback for all unhandled routes
+// Fallback for 404
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

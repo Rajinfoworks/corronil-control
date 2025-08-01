@@ -903,7 +903,7 @@
   <section id="contact" class="animate-section">
     <h2>Contact Us</h2>
     <p style="text-align:center;">Reach out for inquiries, quotes, or more information about our solutions.</p>
-    <form class="contact-form" id="contact-form" action="/api/contact">
+    <form class="contact-form" id="contact-form" method="POST" action="/api/contact">
       <input type="text" id="name" name="name" placeholder="Your Name" required />
       <input type="email" id="email" name="email" placeholder="Your Email" required />
       <textarea id="message" name="message" placeholder="Your Message" required></textarea>
@@ -921,7 +921,8 @@
         };
 
         try {
-          const res = await fetch('http://localhost:5000/api/contact', {
+          const res = await fetch('/api/contact', {
+
 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -929,7 +930,7 @@
           });
 
           const data = await res.json();
-          alert(data.message || 'Form submitted');
+          alert(data.message || '✅ Form submitted');
           this.reset();
         } catch (err) {
           alert('❌ Submission failed. Check server is running.');
