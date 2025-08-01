@@ -19,7 +19,7 @@
   <meta property="og:title" content="CORRONiL CONTROL" />
   <meta property="og:description"
     content="Expert surface solutions: Powder Coating, Sand Blasting, Epoxy Painting, Zinc Spray, Metallizing, Rubber Lining." />
-  <meta property="og:image" content="/images/favicon.ico.png" />
+  <meta property="og:image" content="/images/favicon.ico" />
   <meta property="og:url" content="https://www.corronilcontrol.com/" />
   <meta property="og:type" content="website" />
 
@@ -29,14 +29,19 @@
   <meta property="twitter:title" content="CORRONiL CONTROL – Surface Protection & Coating Experts" />
   <meta property="twitter:description"
     content="Providing industrial surface protection across India: Powder Coating, Sand Blasting, Epoxy Painting, and more." />
-  <meta property="twitter:image" content="images/favicon.ico.png" />
+  <meta property="twitter:image" content="/images/favicon.ico" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/favicon.ico.png" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 
   <title>CORRON<span class="logo-red">i</span>L CONTROL</title>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="style.css">
+  </noscript>
+
+  <script defer src="script.js"></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -726,7 +731,8 @@
 
       <!-- Powder Coating -->
       <div class="service-card">
-        <img src="images/powder-coating.jpg" alt="Powder Coating" class="service-img" data-title="Powder Coating"
+        <img src="images/powder-coating.webp" alt="Powder Coating" loading="lazy" width="150" height="150"
+          class="service-img" data-title="Powder Coating"
           data-desc="Eco-friendly, durable surface finish used in industrial and commercial applications. Available in various colors and textures.">
         <h3>Powder Coating</h3>
         <p>Eco-friendly protective finishes with a broad color range and long-lasting durability.</p>
@@ -734,7 +740,8 @@
 
       <!-- Sand Blasting -->
       <div class="service-card">
-        <img src="images/Sand-Blasting.jpg" alt="Sand Blasting" class="service-img" data-title="Sand Blasting"
+        <img src="images/Sand-Blasting.webp" alt="Sand Blasting" loading="lazy" width="150" height="150"
+          class="service-img" data-title="Sand Blasting"
           data-desc="Efficient method to prepare surfaces before coating. Removes rust, paint, and debris for smooth finishing.">
         <h3>Sand Blasting</h3>
         <p>Efficient surface prep for optimal adhesion and smooth finish.</p>
@@ -742,7 +749,8 @@
 
       <!-- Epoxy Painting -->
       <div class="service-card">
-        <img src="images/epoxy.jpg" alt="Epoxy Painting" class="service-img" data-title="Epoxy Painting"
+        <img src="images/epoxy.webp" alt="Epoxy Painting" loading="lazy" width="150" height="150" class="service-img"
+          data-title="Epoxy Painting"
           data-desc="Heavy-duty epoxy coatings offer superior corrosion resistance and are ideal for industrial environments.">
         <h3>Epoxy Painting</h3>
         <p>Heavy-duty coatings for extreme corrosion resistance.</p>
@@ -750,8 +758,8 @@
 
       <!-- Zinc Spray Galvanizing & Aluminum/S.S. Metallizing -->
       <div class="service-card">
-        <img src="images/zinc.jpg" alt="Zinc Spray Galvanizing & Aluminum/S.S. Metallizing" class="service-img"
-          data-title="Zinc Spray Galvanizing & Aluminum/S.S. Metallizing"
+        <img src="images/zinc.webp" alt="Zinc Spray Galvanizing & Aluminum/S.S. Metallizing" loading="lazy" width="150"
+          height="150" class="service-img" data-title="Zinc Spray Galvanizing & Aluminum/S.S. Metallizing"
           data-desc="Zinc spray provides long-term protection to steel and iron structures against rust and corrosion.& High-temperature and wear-resistant coatings, ideal for aerospace, marine, and critical infrastructure.">
         <h3>Zinc Spray Galvanizing & Aluminum/S.S. Metallizing</h3>
         <p>Long-term protection for steel and iron structures.</p>
@@ -759,7 +767,8 @@
 
       <!-- Sign Boards -->
       <div class="service-card">
-        <img src="images/Sign Boards.jpg" alt="Sign Boards" class="service-img" data-title="Sign Boards"
+        <img src="images/Sign Boards.webp" alt="Sign Boards" loading="lazy" width="150" height="150" class="service-img"
+          data-title="Sign Boards"
           data-desc="Flex Sign Board·Aluminium 2D Board Sign Boards, Shape:Square·Outdoor Multicolor Promotional SS Sign Board">
         <h3>Sign Boards</h3>
         <p>Flex Sign Board·Aluminium 2D Board Sign Boards, Shape:Square·Outdoor Multicolor Promotional SS Sign Boards.
@@ -768,7 +777,8 @@
 
       <!-- Rubber Lining -->
       <div class="service-card">
-        <img src="images/rubber.jpg" alt="Rubber Lining" class="service-img" data-title="Rubber Lining"
+        <img src="images/rubber.webp" alt="Rubber Lining" loading="lazy" width="150" height="150" class="service-img"
+          data-title="Rubber Lining"
           data-desc="Protects tanks and pipelines from corrosion, abrasion, and chemical attacks. Enhances service life.">
         <h3>Rubber Lining</h3>
         <p>Protective linings to minimize wear and maximize lifespan.</p>
@@ -780,7 +790,7 @@
   <!-- Lightbox Popup -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
-      <img src="images/favicon.ico.ico" id="lightbox-img" alt="Popup Image" />
+      <img src="images/favicon.ico" id="lightbox-img" alt="Popup Image" />
       <h2 id="lightbox-title"></h2>
       <p id="lightbox-desc"></p>
     </div>
@@ -793,43 +803,43 @@
       <div class="project-track">
         <div class="project-wrapper">
           <div class="project-item">
-            <img src="images/chimney_project.jpg" alt="200 MTS Chimney Tower" class="project-img"
-              onclick="openProjectLightbox(this)">
+            <img src="images/chimney_project.webp" alt="200 MTS Chimney Tower" loading="lazy" width="150" height="150"
+              class="project-img" onclick="openProjectLightbox(this)">
             <p><strong>200 MTS Chimney Tower:</strong> Designed and installed for <em>Stee Art Pvt. Ltd.</em> using
               precision-engineered fabrication and corrosion-resistant coatings. The tower stands at 200 meters and
               handles extreme wind loads, chemical exposure, and continuous thermal stress.</p>
           </div>
           <div class="project-item">
-            <img src="images/dairy_plant.jpg" alt="Dairy Plant Galvanizing" class="project-img"
-              onclick="openProjectLightbox(this)">
+            <img src="images/dairy_plant.webp" alt="Dairy Plant Galvanizing" loading="lazy" width="150" height="150"
+              class="project-img" onclick="openProjectLightbox(this)">
             <p><strong>Dairy Plant Galvanizing:</strong> Completed for <em>MilkPro Industries</em>, this project
               involved hot-dip galvanizing of process equipment, pipelines, and structural steel used in
               hygiene-sensitive environments with long-term resistance to dairy acids and cleaning agents.</p>
           </div>
           <div class="project-item">
-            <img src="images/oil_tanks.jpg" alt="ONGC Oil Tanks" class="project-img"
-              onclick="openProjectLightbox(this)">
+            <img src="images/oil_tanks.webp" alt="ONGC Oil Tanks" loading="lazy" width="150" height="150"
+              class="project-img" onclick="openProjectLightbox(this)">
             <p><strong>ONGC Oil Tanks:</strong> Massive storage tanks protected for <em>ONGC Offshore Projects</em> with
               a blend of epoxy and metallized coatings. Designed to handle corrosive marine atmospheres and hydrocarbon
               storage, ensuring 15+ years of durability.</p>
           </div>
           <div class="project-item">
-            <img src="images/petrochemical_equipment.jpg" alt="Petrochemical Equipment" class="project-img"
-              onclick="openProjectLightbox(this)">
+            <img src="images/petrochemical_equipment.webp" alt="Petrochemical Equipment" loading="lazy" width="150"
+              height="150" class="project-img" onclick="openProjectLightbox(this)">
             <p><strong>Petrochemical Equipment:</strong> Executed for <em>ChemTech Ltd.</em>, our solution included
               advanced dual-layer epoxy coatings on heat exchangers, vessels, and reactors. The project demanded extreme
               chemical resistance and precise application inside confined areas.</p>
           </div>
           <div class="project-item">
-            <img src="images/steel_bridges.jpg" alt="Steel Bridges Protection" class="project-img"
-              onclick="openProjectLightbox(this)">
+            <img src="images/steel_bridges.webp" alt="Steel Bridges Protection" loading="lazy" width="150" height="150"
+              class="project-img" onclick="openProjectLightbox(this)">
             <p><strong>Steel Bridges:</strong> Long-span bridge components treated with a 3-coat system including zinc
               primer, epoxy mid-coat, and polyurethane topcoat. The project tackled high humidity zones and was
               certified for a 25-year lifespan under coastal conditions.</p>
           </div>
           <div class="project-item">
-            <img src="images/power_plant_piping.jpg" alt="Power Plant Coatings" class="project-img"
-              onclick="openProjectLightbox(this)">
+            <img src="images/power_plant_piping.webp" alt="Power Plant Coatings" loading="lazy" width="150" height="150"
+              class="project-img" onclick="openProjectLightbox(this)">
             <p><strong>Power Plant Piping:</strong> Delivered for <em>ThermalTech Energy</em>, we coated over 10,000
               meters of high-pressure piping with heat- and abrasion-resistant linings. Ensured performance under 600°C
               conditions with zero degradation across thermal cycles.</p>
@@ -840,35 +850,35 @@
   </section>
 
   <div id="project-lightbox" class="lightbox" onclick="closeProjectLightbox()">
-    <img id="project-lightbox-img" src="images/favicon.ico.ico" alt="Project Image">
+    <img id="project-lightbox-img" src="images/favicon.ico" alt="Project Image">
   </div>
 
   <section id="clients" class="animate-section" style="padding: 40px 20px;">
     <h2 class="section-title">Our Clients</h2>
     <div class="clients-grid">
       <div class="client-logo">
-        <img src="images/adani_logo.png" alt="ADANI GROUP" />
+        <img src="images/adani_logo.webp" alt="ADANI GROUP" loading="lazy" width="150" height="150" />
       </div>
       <div class="client-logo">
-        <img src="images/ongc_logo.png" alt="ONGC" />
+        <img src="images/ongc_logo.webp" alt="ONGC" loading="lazy" width="150" height="150" />
       </div>
       <div class="client-logo">
-        <img src="images/lt_logo.png" alt="L&T" />
+        <img src="images/lt_logo.webp" alt="L&T" loading="lazy" width="150" height="150" />
       </div>
       <div class="client-logo">
-        <img src="images/reliance_logo.png" alt="RELIANCE INDUSTRIES" />
+        <img src="images/reliance_logo.webp" alt="RELIANCE INDUSTRIES" loading="lazy" width="150" height="150" />
       </div>
       <div class="client-logo">
-        <img src="images/shubham_logo.png" alt="SHUBHAM EXTRUSION" />
+        <img src="images/shubham_logo.webp" alt="SHUBHAM EXTRUSION" loading="lazy" width="150" height="150" />
       </div>
       <div class="client-logo">
-        <img src="images/rajoo_logo.png" alt="RAJOO" />
+        <img src="images/rajoo_logo.webp" alt="RAJOO" loading="lazy" width="150" height="150" />
       </div>
       <div class="client-logo">
-        <img src="images/mamta_logo.png" alt="MAMATA" />
+        <img src="images/mamta_logo.webp" alt="MAMATA" loading="lazy" width="150" height="150" />
       </div>
       <div class="client-logo">
-        <img src="images/windsor_logo.png" alt="WINDSOR" />
+        <img src="images/windsor_logo.webp" alt="WINDSOR" loading="lazy" width="150" height="150" />
       </div>
     </div>
   </section>
@@ -1106,7 +1116,7 @@
 
   <!-- Lightbox Container -->
   <div class="lightbox" id="lightbox-1">
-    <img src="image.jpg" alt="Popup Image" id="lightbox-img-1" />
+    <img src="image.webp" alt="Popup Image" width="150" height="150" id="lightbox-img-1" />
   </div>
 
   <script>
@@ -1272,8 +1282,6 @@
       }
     });
   </script>
-
-  <script src="script.js" defer></script>
 
   <button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
 
