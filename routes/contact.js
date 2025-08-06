@@ -1,54 +1,54 @@
-const express = require('express');
+// contact.js
+const express = require("express");
 const router = express.Router();
-const Contact = require('../models/Contact');
+const Contact = require("../models/Contact");
+const nodemailer = require("nodemailer");
 
-router.post('/', async (req, res) => {
+// Email transporter config
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
+// Single route to handle form submission
+router.post("/", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  // Validate input
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, message: "All fields are required." });
+  }
+
   try {
-    const { name, email, message } = req.body;
+    // Save to MongoDB
     const newMessage = new Contact({ name, email, message });
     await newMessage.save();
-    res.status(200).json({ success: true, message: 'Message saved!' });
+
+    // Send email
+    const mailOptions = {
+      from: `"${name}" <${email}>`,
+      to: "c.control2005@gmail.com",
+      subject: "New Message from CORRONiL CONTROL Website",
+      text: `
+        You have received a new message:
+        
+        Name: ${name}
+        Email: ${email}
+        Message: ${message}
+      `
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({ success: true, message: "Message saved and email sent!" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Server error' });
+    console.error("Error in contact form:", error);
+    res.status(500).json({ success: false, message: "Server error. Try again later." });
   }
 });
 
 module.exports = router;
 
-
-const nodemailer = require("nodemailer");
-
-// Replace with your Gmail or SMTP credentials
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,      // your email
-    pass: process.env.EMAIL_PASS     // NOT your Gmail password
-  }
-});
-
-app.post("/contact", async (req, res) => {
-  const { name, email, message } = req.body;
-
-  const mailOptions = {
-    from: `"${name}" <${email}>`,
-    to: "c.control2005@gmail.com", // where you want to receive the message
-    subject: "New Message from CORRONiL CONTROL Website",
-    text: `
-      You have received a new message:
-      
-      Name: ${name}
-      Email: ${email}
-      Message: ${message}
-    `
-  };
-
-  try {
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ success: true, message: "Message sent successfully!" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ success: false, message: "Failed to send message." });
-  }
-});

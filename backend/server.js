@@ -1,9 +1,11 @@
+// Required modules
 require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const nodemailer = require('nodemailer'); // <-- Email
 
 // Initialize app
 const app = express();
@@ -28,28 +30,51 @@ const Contact = mongoose.model('Contact', new mongoose.Schema({
   message: String,
 }));
 
-// API Route
+// Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,   // from .env
+    pass: process.env.EMAIL_PASS    // app password from .env
+  }
+});
+
+// 📩 Contact route
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
   try {
+    // Save to DB
     await Contact.create({ name, email, message });
-    res.json({ success: true, message: '✅ Message received!' });
+
+    // Send email
+    const mailOptions = {
+      from: `"${name}" <${email}>`,
+      to: "c.control2005@gmail.com", // your email to receive
+      subject: "New Message from CORRONiL CONTROL Website",
+      text: `
+        Name: ${name}
+        Email: ${email}
+        Message: ${message}
+      `
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.json({ success: true, message: '✅ Message saved and email sent!' });
   } catch (err) {
-    console.error('❌ Error saving message:', err);
-    res.status(500).json({ success: false, message: '❌ Error saving message' });
+    console.error('❌ Error:', err);
+    res.status(500).json({ success: false, message: '❌ Something went wrong' });
   }
 });
 
-// Serve static frontend files from /public
+// Serve frontend
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Catch-all: serve index.html for frontend routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Fallback for 404
+// 404 fallback
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
