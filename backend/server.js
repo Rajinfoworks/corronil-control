@@ -2,12 +2,11 @@
 // Required Modules
 // ===============================
 require('dotenv').config();
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-const nodemailer = require('nodemailer'); // Email functionality
+const nodemailer = require('nodemailer');
 
 // ===============================
 // Initialize App
@@ -47,11 +46,11 @@ const Contact = mongoose.model('Contact', new mongoose.Schema({
 // Nodemailer Transporter
 // ===============================
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER,  // from .env
-    pass: process.env.EMAIL_PASS   // app password from .env
-  }
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
 // ===============================
@@ -61,15 +60,15 @@ app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
   try {
-    // Save message to MongoDB
+    // Save to DB
     await Contact.create({ name, email, message });
 
-    // Send notification email
+    // Send email
     const mailOptions = {
       from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_RECEIVER || "c.control2005@gmail.com",
-      subject: "New Message from CORRONiL CONTROL Website",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+      to: process.env.EMAIL_RECEIVER || 'c.control2005@gmail.com',
+      subject: 'New Message from CORRONiL CONTROL Website',
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
 
     await transporter.sendMail(mailOptions);
