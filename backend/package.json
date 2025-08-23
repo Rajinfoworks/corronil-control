@@ -3,10 +3,18 @@
   "version": "1.0.0",
   "description": "CORRONiL CONTROL - Industrial Surface Protection Solutions",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "keywords": ["corrosion", "industrial", "surface treatment", "corronil", "rajinfoworks"],
+  "keywords": [
+    "corrosion",
+    "industrial",
+    "surface treatment",
+    "corronil",
+    "rajinfoworks"
+  ],
   "author": "Raj Sharma",
   "license": "ISC",
   "repository": {
@@ -24,5 +32,7 @@
     "mongoose": "^7.8.7",
     "nodemailer": "^7.0.5"
   },
-  "type": "commonjs"
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }
