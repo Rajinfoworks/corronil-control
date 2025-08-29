@@ -1,0 +1,1587 @@
+/* =========================================================
+   Global Variables
+========================================================= */
+:root {
+  /* Colors */
+  --bg-light: #ffffff;
+  --bg-dark: #111827;
+  --bg-card-light: rgba(255, 255, 255, 0.83);
+  --bg-card-dark: #1f2937;
+  --text-main-light: #222222;
+  --text-main-dark: #f3f4f6;
+  --text-muted-light: #666666;
+  --text-muted-dark: #cbd5e1;
+  --accent: #0a1a2b;
+  --logo-red: #ff0000;
+  --highlight: #133143;
+  --highlight2: #008dc5;
+
+  /* Effects */
+  --shadow: rgba(0, 0, 0, 0.08);
+  --radius: 10px;
+  --transition: 0.3s ease;
+}
+
+/* =========================================================
+   Base Styles
+========================================================= */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-light);
+  color: var(--text-main-light);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-main-dark);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  color: var(--accent);
+  text-align: center;
+  line-height: 1.2;
+  transition: color var(--transition);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: var(--text-main-dark);
+}
+
+/* Paragraphs */
+p {
+  color: var(--text-muted-light);
+  line-height: 1.7;
+  transition: color var(--transition);
+}
+
+body.dark-mode p {
+  color: var(--text-muted-dark);
+}
+
+/* Special Text */
+.logo-red {
+  color: var(--logo-red);
+}
+
+
+/* ========================================================================== 
+   Header & Navigation – Dark Mode Compatible
+============================================================================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-light);
+  color: var(--text-main-light);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Dark Mode Header */
+body.dark-mode nav {
+  background: var(--bg-dark);
+  color: var(--text-main-dark);
+}
+
+/* ------------------------------
+   Logo
+------------------------------- */
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .nav-logo {
+  color: #fff;
+  /* Bright logo for dark mode */
+}
+
+/* ------------------------------
+   Navigation Links Container
+------------------------------- */
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: max-height 0.4s ease, background 0.3s ease, color 0.3s ease;
+}
+
+/* ------------------------------
+   Nav Links
+------------------------------- */
+.nav-container a {
+  text-decoration: none;
+  color: var(--text-main-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .nav-container a {
+  color: var(--text-main-dark);
+}
+
+.nav-container a:hover {
+  background: var(--highlight);
+  color: #fff;
+}
+
+.nav-link.active-link {
+  color: var(--highlight);
+  font-weight: bold;
+  border-bottom: 2px solid var(--highlight);
+}
+
+/* ------------------------------
+   Hamburger / Toggle Menu
+------------------------------- */
+.nav-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--accent);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .nav-toggle {
+  color: #fff;
+}
+
+.nav-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ------------------------------
+   Scrolled Header Effect
+------------------------------- */
+header.scrolled {
+  background-color: var(--bg-card-light);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode header.scrolled {
+  background-color: var(--bg-card-dark);
+}
+
+/* ==============================
+   Responsive Navigation
+============================== */
+@media (max-width: 768px) {
+  .nav-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 220px;
+    flex-direction: column;
+    background: var(--bg-light);
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: max-height 0.4s ease, background 0.3s ease, color 0.3s ease;
+  }
+
+  body.dark-mode .nav-container {
+    background: var(--bg-card-dark);
+    color: var(--text-main-dark);
+  }
+
+  .nav-container.open {
+    max-height: 500px;
+    padding: 1rem 0;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-container a {
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    color: var(--text-main-light);
+  }
+
+  body.dark-mode .nav-container a {
+    color: var(--text-main-dark);
+  }
+
+  .nav-container a:hover {
+    background: var(--highlight);
+    color: #fff;
+  }
+}
+
+
+
+/* ========================================================================== 
+   Buttons (Scroll / WhatsApp / Back to Top) – Modern & Responsive
+============================================================================= */
+#topBtn,
+#scrollTopBtn,
+#whatsappBtn {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------------------
+   Back to Top Button
+------------------------------- */
+#topBtn {
+  bottom: 20px;
+  right: 25px;
+  padding: 12px 16px;
+  background-color: var(--highlight);
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+#topBtn:hover {
+  background-color: #ff4d4d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ------------------------------
+   Scroll Top Button
+------------------------------- */
+#scrollTopBtn {
+  bottom: 30px;
+  right: 30px;
+  padding: 14px 18px;
+  background-color: var(--highlight);
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+#scrollTopBtn:hover {
+  background-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ===============================
+   Mobile Responsiveness
+=============================== */
+@media (max-width: 768px) {
+
+  #topBtn,
+  #scrollTopBtn,
+  #whatsappBtn {
+    padding: 10px 12px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  #topBtn,
+  #scrollTopBtn,
+  #whatsappBtn {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ========================================================================== 
+   Hero Section – Modern, Responsive & Dark Mode Friendly
+============================================================================= */
+.hero {
+  min-height: 100vh;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(120deg, #e0f7ff, #ffffff);
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--secondary);
+  animation: bounceIn 1s ease-in-out;
+  margin-bottom: 1rem;
+}
+
+body.dark-mode .hero h1 {
+  color: #ffffff;
+  /* Ensures title is visible in dark mode */
+}
+
+.hero h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--highlight);
+  margin-bottom: 1rem;
+}
+
+body.dark-mode .hero h2 {
+  color: #f3f4f6;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+body.dark-mode .hero p {
+  color: var(--text-main-dark);
+}
+
+.hero button {
+  margin-top: 2rem;
+  padding: 0.85rem 2.2rem;
+  background: var(--highlight);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.hero button:hover {
+  background: var(--highlight2);
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   Dark Mode Hero Background
+=============================== */
+body.dark-mode .hero {
+  background: linear-gradient(120deg, #1f2937, #111827);
+}
+
+/* ===============================
+   Mobile Responsiveness
+=============================== */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .hero button {
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero button {
+    padding: 0.75rem 1.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .hero button {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+
+
+/* ========================================================================== 
+   About Section – Professional & Responsive
+============================================================================= */
+#about {
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+}
+
+#about h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--secondary);
+  position: relative;
+}
+
+#about h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.8rem auto 0;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+#about p {
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: justify;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+/* ===============================
+   Mobile Responsiveness
+=============================== */
+@media (max-width: 768px) {
+  #about {
+    padding: 3rem 1rem;
+  }
+
+  #about h2 {
+    font-size: 1.6rem;
+  }
+
+  #about p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  #about h2 {
+    font-size: 1.4rem;
+  }
+
+  #about p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+
+/* =========================================================
+   Services Section – Modern Responsive with Animations
+========================================================= */
+#services {
+  padding: 4rem 2rem;
+  text-align: center;
+  overflow: hidden;
+  background: var(--bg-section);
+}
+
+#services .section-title {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: var(--secondary);
+  font-weight: 700;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s forwards;
+}
+
+#services .section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.8rem auto 0;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* ===== Service Grid ===== */
+.service-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: stretch;
+}
+
+/* ===== Service Card ===== */
+.service-card {
+  background: var(--bg-card-light);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+body.dark-mode .service-card {
+  background: var(--bg-card-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+body.dark-mode .service-card:hover {
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+.service-card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1.2rem;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.1);
+}
+
+.service-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+body.dark-mode .service-card h3 {
+  color: var(--text-main-dark);
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+body.dark-mode .service-card p {
+  color: var(--text-muted-dark);
+}
+
+/* Gradient overlay effect */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(10, 26, 43, 0.8), transparent);
+  transition: top 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.service-card:hover::before {
+  top: 0;
+}
+
+/* ===========================
+   Mobile Responsive Services
+=========================== */
+@media (max-width: 768px) {
+  #services {
+    padding: 2rem 1rem;
+  }
+
+  #services .section-title {
+    font-size: 1.5rem;
+  }
+
+  .service-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+  }
+
+  .service-card {
+    flex: 0 0 calc(80% - 1rem);
+    margin-bottom: 0;
+    padding: 1.5rem 1rem;
+    scroll-snap-align: start;
+  }
+
+  .service-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+  }
+
+  .service-card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+/* ===========================
+   Animations
+=========================== */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* =========================================================
+   Projects Section – Modern Responsive with Animations
+========================================================= */
+#projects {
+  padding: 4rem 2rem;
+  background: var(--bg-section);
+  text-align: center;
+  overflow: hidden;
+}
+
+#projects .section-title {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: var(--secondary);
+  font-weight: 700;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s forwards;
+}
+
+#projects .section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.8rem auto 0;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* ===== Project Grid ===== */
+.project-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: stretch;
+}
+
+/* ===== Project Card ===== */
+.project-card {
+  background: var(--bg-card-light);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+body.dark-mode .project-card {
+  background: var(--bg-card-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+body.dark-mode .project-card:hover {
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+.project-card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1.2rem;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+.project-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+body.dark-mode .project-card h3 {
+  color: var(--text-main-dark);
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  word-wrap: break-word;
+}
+
+body.dark-mode .project-card p {
+  color: var(--text-muted-dark);
+}
+
+/* Gradient overlay effect */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(10, 26, 43, 0.8), transparent);
+  transition: top 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  top: 0;
+}
+
+/* ===== Modal Popup ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-content {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease;
+  transform: scale(0.9);
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+#caption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: var(--primary);
+}
+
+/* ===========================
+   Mobile Responsive Projects
+=========================== */
+@media (max-width: 768px) {
+  #projects {
+    padding: 2rem 1rem;
+  }
+
+  #projects .section-title {
+    font-size: 1.5rem;
+  }
+
+  .project-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+  }
+
+  .project-card {
+    flex: 0 0 calc(80% - 1rem);
+    margin-bottom: 0;
+    padding: 1.5rem 1rem;
+    scroll-snap-align: start;
+  }
+
+  .project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+  }
+
+  .project-card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+/* ===========================
+   Animations
+=========================== */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+
+
+/* ========================================================================== 
+   Clients Section – Fully Responsive & Professional (No Scroll)
+============================================================================= */
+#clients {
+  padding: 4rem 2rem;
+  background: var(--bg-alt);
+  text-align: center;
+}
+
+#clients .section-title {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: var(--secondary);
+  font-weight: 700;
+  position: relative;
+}
+
+#clients .section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.8rem auto 0;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.client-logo {
+  background: var(--bg-section);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client-logo::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #0a1a2b, transparent);
+  transition: top 0.4s ease;
+  border-radius: 16px;
+}
+
+.client-logo:hover::before {
+  top: 0;
+}
+
+.client-logo img {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: block;
+  margin: auto;
+}
+
+.client-logo:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.client-logo:hover img {
+  transform: scale(1.1);
+}
+
+/* ==============================
+   Mobile Responsiveness – Grid (No Scroll)
+============================== */
+@media (max-width: 768px) {
+  #clients {
+    padding: 2rem 1rem;
+  }
+
+  #clients .section-title {
+    font-size: 1.5rem;
+  }
+
+  .clients-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+  }
+
+  .client-logo {
+    padding: 0.6rem;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .client-logo img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+
+
+/* ========================================================================== 
+   Testimonials Section – Card Style (Like Contact Info)
+============================================================================= */
+#testimonials {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: var(--bg-section);
+  font-family: 'Poppins', sans-serif;
+}
+
+#testimonials .section-title {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: var(--secondary);
+  font-weight: 700;
+  position: relative;
+}
+
+#testimonials .section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.8rem auto 0;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* ------------------------------
+   Testimonials Grid
+------------------------------- */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* ------------------------------
+   Testimonial Card
+------------------------------- */
+.testimonial-card {
+  background: #fdfdfd;
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+  border-left: 5px solid var(--primary);
+}
+
+body.dark-mode .testimonial-card {
+  background: var(--bg-card-dark);
+  color: var(--text-main-dark);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------
+   Testimonial Content
+------------------------------- */
+.testimonial-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.testimonial-card h4 {
+  font-size: 1.1rem;
+  color: var(--secondary);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.testimonial-card span {
+  font-size: 0.95rem;
+  color: var(--logo-red); /* ensures the i matches perfectly */
+  font-weight: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  vertical-align: baseline;
+  display: inline-block;
+}
+
+/* ==============================
+   Mobile Responsiveness – Grid Layout
+============================== */
+@media (max-width: 768px) {
+  #testimonials {
+    padding: 2rem 1rem;
+  }
+
+  #testimonials .section-title {
+    font-size: 1.5rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .testimonial-card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .testimonial-card h4 {
+    font-size: 1rem;
+  }
+
+  .testimonial-card span {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .testimonial-card p {
+    font-size: 0.8rem;
+  }
+
+  .testimonial-card h4 {
+    font-size: 0.95rem;
+  }
+
+  .testimonial-card span {
+    font-size: 0.8rem;
+  }
+}
+
+
+
+
+/* ==========================================================================  
+   Contact Section – Light & Dark Mode
+============================================================================= */
+.contact-section {
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+/* ------------------------------
+   Contact Form
+------------------------------- */
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  background: #fff;
+  /* Light mode background */
+  border-radius: var(--radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .contact-form {
+  background: var(--bg-card-dark);
+  /* Dark mode background */
+  color: var(--text-main-dark);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #111;
+  transition: border 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+  background: var(--bg-card-dark);
+  color: var(--text-main-dark);
+  border: 1px solid #444;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--highlight);
+  box-shadow: 0 0 8px rgba(224, 122, 95, 0.2);
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--highlight);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+  background: var(--highlight2);
+  transform: translateY(-2px);
+}
+
+/* ------------------------------
+   Contact Info – Professional Card
+------------------------------- */
+.contact-info {
+  background: #fdfdfd;
+  /* Light mode background */
+  padding: 1.5rem 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+  border-left: 5px solid #0a1a2b;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .contact-info {
+  background: var(--bg-card-dark);
+  border-left: 5px solid var(--highlight);
+  color: var(--text-main-dark);
+}
+
+.contact-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+body.dark-mode .contact-info h3 {
+  color: #fff;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.7rem;
+  color: #555;
+}
+
+body.dark-mode .contact-info p {
+  color: #ccc;
+}
+
+.contact-info a {
+  color: #0a1a2b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+body.dark-mode .contact-info a {
+  color: var(--highlight);
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------
+   Mobile Responsive
+------------------------------- */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 3rem 1rem;
+  }
+
+  #contact h2 {
+    font-size: 2rem;
+  }
+
+  #contact p {
+    font-size: 1rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form button {
+    font-size: 0.95rem;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .contact-info {
+    padding: 1.2rem 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .contact-info p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  #contact h2 {
+    font-size: 1.6rem;
+  }
+
+  #contact p {
+    font-size: 0.95rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form button {
+    font-size: 0.9rem;
+  }
+
+  .contact-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .contact-info p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ========================================================================== 
+   Preloader – Fullscreen Loading Animation
+============================================================================= */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 0.3s ease;
+}
+
+body.dark-mode .preloader {
+  background: var(--bg-dark);
+}
+
+/* Preloader spinner */
+.preloader::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border: 6px solid var(--primary);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================================================== 
+   Lightbox – Image Popup
+============================================================================= */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.lightbox-content {
+  border-radius: 16px;
+  background: var(--bg-card-light);
+  color: var(--text-main);
+  padding: 2rem;
+  max-width: 90%;
+  max-height: 90%;
+  text-align: center;
+  overflow: auto;
+  animation: zoomIn 0.3s ease;
+}
+
+body.dark-mode .lightbox-content {
+  background: var(--bg-card-dark);
+  color: var(--text-light);
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  cursor: zoom-out;
+  transition: transform 0.3s ease;
+}
+
+.lightbox-content img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ========================================================================== 
+   Dark Mode Toggle Button
+============================================================================= */
+.dark-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.dark-toggle-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ========================================================================== 
+   Footer – Professional, Responsive & Dark Mode Compatible
+============================================================================= */
+footer {
+  border-top: 2px solid var(--highlight);
+  background: var(--bg-section);
+  color: var(--text-muted-light);
+  text-align: center;
+  padding: 1.5rem 1rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+footer .footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+footer .logo {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+footer .logo-red {
+  color: var(--logo-red);
+  font-weight: bold;
+}
+
+footer .dev-credit {
+  margin-top: 0.5rem;
+}
+
+footer .dev-credit a {
+  color: #000;
+  /* Light mode text color */
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+footer .dev-credit a .red-i {
+  color: var(--logo-red);
+  /* i stays red */
+}
+
+footer .dev-credit a:hover {
+  color: var(--highlight);
+}
+
+/* Dark Mode */
+body.dark-mode footer {
+  background: var(--bg-card-dark);
+  color: var(--text-muted-dark);
+}
+
+body.dark-mode footer .logo {
+  color: var(--text-main-dark);
+}
+
+body.dark-mode footer .dev-credit a {
+  color: #fff;
+  /* Dark mode text color */
+}
+
+body.dark-mode footer .dev-credit a:hover {
+  color: var(--highlight);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  footer {
+    font-size: 0.85rem;
+    padding: 1rem 0.5rem 0.8rem;
+  }
+}
