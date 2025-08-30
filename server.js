@@ -9,38 +9,55 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 
 // ===============================
+// Validate Environment Variables
+// ===============================
+const requiredEnvs = ['PORT', 'MONGO_URI', 'EMAIL_USER', 'EMAIL_PASS', 'EMAIL_RECEIVER'];
+requiredEnvs.forEach((key) => {
+  if (!process.env[key]) {
+    console.error(`❌ Environment variable ${key} is missing! Please add it to your .env`);
+    process.exit(1);
+  }
+});
+
+// ===============================
 // Initialize App
 // ===============================
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // ===============================
 // Middleware
 // ===============================
-app.use(cors());
 app.use(express.json());
 
-// Serve frontend from backend/public
+// Restrict CORS to your domain
+const allowedOrigins = [process.env.CLIENT_ORIGIN || 'https://www.corronilcontrol.com'];
+app.use(cors({
+  origin: allowedOrigins,
+  optionsSuccessStatus: 200,
+}));
+
+// Serve static frontend
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ===============================
 // MongoDB Connection
 // ===============================
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('✅ Connected to MongoDB'))
-.catch((err) => console.error('❌ MongoDB connection failed:', err));
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => {
+    console.error('❌ MongoDB connection failed:', err);
+    process.exit(1);
+  });
 
 // ===============================
 // Mongoose Schema
 // ===============================
 const Contact = mongoose.model('Contact', new mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-}));
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  message: { type: String, required: true },
+}, { timestamps: true }));
 
 // ===============================
 // Nodemailer Transporter
@@ -49,7 +66,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    pass: process.env.EMAIL_PASS, // Gmail App Password
   },
 });
 
@@ -59,6 +76,10 @@ const transporter = nodemailer.createTransport({
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, message: '❌ All fields are required' });
+  }
+
   try {
     // Save to DB
     await Contact.create({ name, email, message });
@@ -66,11 +87,10 @@ app.post('/api/contact', async (req, res) => {
     // Send email
     const mailOptions = {
       from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_RECEIVER || 'c.control2005@gmail.com',
+      to: process.env.EMAIL_RECEIVER,
       subject: 'New Message from CORRONiL CONTROL Website',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
-
     await transporter.sendMail(mailOptions);
 
     res.json({ success: true, message: '✅ Message saved and email sent!' });
@@ -81,9 +101,10 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // ===============================
-// Serve Frontend Routes
+// Serve Frontend Routes (SPA)
 // ===============================
-app.get('*', (req, res) => {
+const SPA_ROUTES = ['/', '/about', '/services', '/projects', '/clients', '/contact', '/blog.html', '/faq.html'];
+app.get(SPA_ROUTES, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
