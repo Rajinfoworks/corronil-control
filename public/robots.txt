@@ -1,4 +1,7 @@
+# robots.txt for corronilcontrol.com
 User-agent: *
 Allow: /
+
 Sitemap: https://www.corronilcontrol.com/sitemap.xml
+
 
