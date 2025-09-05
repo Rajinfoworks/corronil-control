@@ -7,11 +7,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const fs = require('fs');
 
 // ===============================
 // Validate Environment Variables
 // ===============================
-const requiredEnvs = ['PORT', 'MONGO_URI', 'EMAIL_USER', 'EMAIL_PASS', 'EMAIL_RECEIVER'];
+const requiredEnvs = ['PORT', 'MONGO_URI', 'EMAIL_USER', 'EMAIL_PASS', 'EMAIL_RECEIVER', 'CLIENT_ORIGIN'];
 requiredEnvs.forEach((key) => {
   if (!process.env[key]) {
     console.error(`❌ Environment variable ${key} is missing! Please add it to your .env`);
@@ -30,10 +33,19 @@ const PORT = process.env.PORT;
 // ===============================
 app.use(express.json());
 
-// Restrict CORS to your domain
-const allowedOrigins = [process.env.CLIENT_ORIGIN || 'https://www.corronilcontrol.com'];
+// Security Headers
+app.use(helmet());
+
+// Logging
+app.use(morgan('combined'));
+
+// CORS
+const allowedOrigins = [process.env.CLIENT_ORIGIN];
 app.use(cors({
-  origin: allowedOrigins,
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error('Not allowed by CORS'));
+  },
   optionsSuccessStatus: 200,
 }));
 
@@ -66,7 +78,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // Gmail App Password
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -85,26 +97,39 @@ app.post('/api/contact', async (req, res) => {
     await Contact.create({ name, email, message });
 
     // Send email
-    const mailOptions = {
+    await transporter.sendMail({
       from: `"${name}" <${email}>`,
       to: process.env.EMAIL_RECEIVER,
       subject: 'New Message from CORRONiL CONTROL Website',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    };
-    await transporter.sendMail(mailOptions);
+    });
 
     res.json({ success: true, message: '✅ Message saved and email sent!' });
   } catch (err) {
-    console.error('❌ Error:', err);
+    console.error('❌ Error:', err.stack || err);
     res.status(500).json({ success: false, message: '❌ Something went wrong' });
   }
 });
 
 // ===============================
-// Serve Frontend Routes (SPA)
+// Serve Sitemap and Robots.txt
 // ===============================
-const SPA_ROUTES = ['/', '/about', '/services', '/projects', '/clients', '/contact', '/blog.html', '/faq.html'];
-app.get(SPA_ROUTES, (req, res) => {
+app.get('/sitemap.xml', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
+});
+
+// ===============================
+// Wildcard SPA Routes
+// ===============================
+app.get('*', (req, res) => {
+  const filePath = path.join(__dirname, 'public', req.path);
+  if (fs.existsSync(filePath) && fs.lstatSync(filePath).isFile()) {
+    return res.sendFile(filePath);
+  }
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
