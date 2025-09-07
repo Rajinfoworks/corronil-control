@@ -1,8 +1,4 @@
-# Allow all search engines
 User-agent: *
-Disallow: /api
-Disallow: /admin
 Allow: /
 
-# Sitemap
 Sitemap: https://www.corronilcontrol.com/sitemap.xml
