@@ -40,6 +40,12 @@ app.use(cors({
 // Serve static frontend
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Serve robots.txt explicitly
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
+});
+
 // ===============================
 // MongoDB Connection
 // ===============================
@@ -54,9 +60,9 @@ mongoose.connect(process.env.MONGO_URI)
 // Mongoose Schema
 // ===============================
 const Contact = mongoose.model('Contact', new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  message: { type: String, required: true },
+  name: { type: String, required: true, trim: true },
+  email: { type: String, required: true, trim: true, lowercase: true },
+  message: { type: String, required: true, trim: true },
 }, { timestamps: true }));
 
 // ===============================
@@ -66,7 +72,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // Gmail App Password
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -81,18 +87,16 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    // Save to DB
     await Contact.create({ name, email, message });
 
-    // Send email
     const mailOptions = {
       from: `"${name}" <${email}>`,
       to: process.env.EMAIL_RECEIVER,
       subject: 'New Message from CORRONiL CONTROL Website',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
-    await transporter.sendMail(mailOptions);
 
+    await transporter.sendMail(mailOptions);
     res.json({ success: true, message: '✅ Message saved and email sent!' });
   } catch (err) {
     console.error('❌ Error:', err);
