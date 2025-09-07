@@ -1,7 +1,7 @@
 {
   "name": "corronil-control",
   "version": "1.0.0",
-  "description": "CORRONiL CONTROL - Industrial Surface Protection Solutions",
+  "description": "CORRONiL CONTROL – Industrial Surface Protection & Anti-Corrosion Coating Solutions in India",
   "main": "server.js",
   "type": "commonjs",
   "engines": {
@@ -12,20 +12,27 @@
     "dev": "nodemon server.js"
   },
   "keywords": [
-    "corrosion",
-    "industrial",
-    "surface treatment",
     "corronil",
+    "corrosion control",
+    "anti-corrosion coating",
+    "industrial coating",
+    "surface protection",
+    "powder coating",
+    "sand blasting",
+    "epoxy painting",
+    "metallizing",
+    "rubber lining",
+    "industrial surface treatment",
     "rajinfoworks"
   ],
   "author": "Raj Sharma",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rajinfoworks/corronil-control.git"
+    "url": "https://github.com/Rajinfoworks/corronil-control.git"
   },
   "bugs": {
-    "url": "https://github.com/rajinfoworks/corronil-control/issues"
+    "url": "https://github.com/Rajinfoworks/corronil-control/issues"
   },
   "homepage": "https://www.corronilcontrol.com",
   "dependencies": {
