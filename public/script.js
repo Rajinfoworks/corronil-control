@@ -131,9 +131,21 @@ if (navToggle && navLinks) {
       // Header shrink
       if(header) header.classList.toggle("scrolled", scrollY > 20);
 
-      // Scroll-to-top button
-      if(scrollTopBtn) scrollTopBtn.style.display = scrollY > 300 ? "block" : "none";
+      /// ===== Back-to-Top Button =====
+const scrollTopBtn = document.getElementById("scrollTopBtn");
 
+window.addEventListener("scroll", () => {
+  if(scrollTopBtn) scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+if(scrollTopBtn) {
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+
+      
       // ScrollSpy
       let currentSection = "";
       pageSections.forEach(section => {
@@ -249,3 +261,26 @@ window.smoothScrollTo = (sectionId) => {
   const target = document.getElementById(sectionId);
   if(target) target.scrollIntoView({ behavior: "smooth" });
 };
+
+/* =========================
+   Disable Right-Click & Developer Shortcuts
+========================= */
+
+// Disable right-click
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+    alert("Right-click is disabled on this website.");
+});
+
+// Disable common keyboard shortcuts
+document.addEventListener("keydown", function(e) {
+    // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    if (
+        e.key === "F12" || // F12
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) || // Ctrl+Shift+I/J
+        (e.ctrlKey && e.key === "U") // Ctrl+U
+    ) {
+        e.preventDefault();
+        alert("This action is disabled on this website.");
+    }
+});
