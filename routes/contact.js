@@ -5,9 +5,9 @@ const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 
 // ===============================
-// Contact Mongoose Model
+// contact Mongoose Model
 // ===============================
-const ContactSchema = new mongoose.Schema(
+const contactSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
     email: { type: String, required: true, trim: true, lowercase: true },
@@ -16,7 +16,7 @@ const ContactSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Contact = mongoose.model("Contact", ContactSchema);
+const contact = mongoose.model("contact", contactSchema);
 
 // ===============================
 // Nodemailer Transporter
@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
 
   try {
     // Save message to MongoDB
-    const newMessage = await Contact.create({ name, email, message });
+    const newMessage = await contact.create({ name, email, message });
 
     // Send email notification
     const mailOptions = {
@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
 
     return res.status(200).json({ success: true, message: "Message saved and email sent!" });
   } catch (err) {
-    console.error("❌ Contact form error:", err);
+    console.error("❌ contact form error:", err);
     return res.status(500).json({ success: false, message: "Server error. Try again later." });
   }
 });

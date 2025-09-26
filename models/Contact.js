@@ -2,9 +2,9 @@
 const mongoose = require('mongoose');
 
 // ===============================
-// Contact Schema
+// contact Schema
 // ===============================
-const ContactSchema = new mongoose.Schema(
+const contactSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -29,6 +29,6 @@ const ContactSchema = new mongoose.Schema(
 );
 
 // ===============================
-// Export Contact Model
+// Export contact Model
 // ===============================
-module.exports = mongoose.model('Contact', ContactSchema);
+module.exports = mongoose.model('contact', contactSchema);

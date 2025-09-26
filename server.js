@@ -7,7 +7,7 @@ const path = require('path');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const connectDB = require('./db'); // Using your db.js
-const Contact = require('./models/contact'); // Make sure this exists
+const contact = require('./models/contact'); // Make sure this exists
 
 // ===============================
 // Validate Environment Variables
@@ -60,7 +60,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // ===============================
-// Contact Route
+// contact Route
 // ===============================
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
@@ -70,7 +70,7 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    await Contact.create({ name, email, message });
+    await contact.create({ name, email, message });
 
     const mailOptions = {
       from: `"${name}" <${email}>`,
