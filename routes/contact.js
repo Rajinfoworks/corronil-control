@@ -1,26 +1,10 @@
-// routes/contact.js
+// contact.js
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
+const Contact = require("../models/Contact");
 const nodemailer = require("nodemailer");
 
-// ===============================
-// contact Mongoose Model
-// ===============================
-const contactSchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true, trim: true },
-    email: { type: String, required: true, trim: true, lowercase: true },
-    message: { type: String, required: true, trim: true }
-  },
-  { timestamps: true }
-);
-
-const contact = mongoose.model("contact", contactSchema);
-
-// ===============================
-// Nodemailer Transporter
-// ===============================
+// Email transporter config
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -29,37 +13,42 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-
-// ===============================
-// POST /api/contact
-// ===============================
+// Single route to handle form submission
 router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
 
-  // Validate request
+  // Validate input
   if (!name || !email || !message) {
     return res.status(400).json({ success: false, message: "All fields are required." });
   }
 
   try {
-    // Save message to MongoDB
-    const newMessage = await contact.create({ name, email, message });
+    // Save to MongoDB
+    const newMessage = new Contact({ name, email, message });
+    await newMessage.save();
 
-    // Send email notification
+    // Send email
     const mailOptions = {
       from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_RECEIVER,
+      to: "c.control2005@gmail.com",
       subject: "New Message from CORRONiL CONTROL Website",
-      text: `You have received a new message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+      text: `
+        You have received a new message:
+        
+        Name: ${name}
+        Email: ${email}
+        Message: ${message}
+      `
     };
 
     await transporter.sendMail(mailOptions);
 
-    return res.status(200).json({ success: true, message: "Message saved and email sent!" });
-  } catch (err) {
-    console.error("❌ contact form error:", err);
-    return res.status(500).json({ success: false, message: "Server error. Try again later." });
+    res.status(200).json({ success: true, message: "Message saved and email sent!" });
+  } catch (error) {
+    console.error("Error in contact form:", error);
+    res.status(500).json({ success: false, message: "Server error. Try again later." });
   }
 });
 
 module.exports = router;
+

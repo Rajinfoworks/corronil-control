@@ -1,10 +1,6 @@
-// models/contact.js
 const mongoose = require('mongoose');
 
-// ===============================
-// contact Schema
-// ===============================
-const contactSchema = new mongoose.Schema(
+const ContactSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -22,13 +18,14 @@ const contactSchema = new mongoose.Schema(
       required: [true, 'Message is required'],
       trim: true,
     },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
-    timestamps: true, // Automatically adds createdAt & updatedAt
+    timestamps: true, // Adds createdAt & updatedAt automatically
   }
 );
 
-// ===============================
-// Export contact Model
-// ===============================
-module.exports = mongoose.model('contact', contactSchema);
+module.exports = mongoose.model('Contact', ContactSchema);

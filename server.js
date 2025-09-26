@@ -3,11 +3,10 @@
 // ===============================
 require('dotenv').config();
 const express = require('express');
-const path = require('path');
+const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const nodemailer = require('nodemailer');
-const connectDB = require('./db'); // Using your db.js
-const contact = require('./models/contact'); // Make sure this exists
 
 // ===============================
 // Validate Environment Variables
@@ -24,15 +23,19 @@ requiredEnvs.forEach((key) => {
 // Initialize App
 // ===============================
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT;
 
 // ===============================
 // Middleware
 // ===============================
 app.use(express.json());
 
+// Restrict CORS to your domain
 const allowedOrigins = [process.env.CLIENT_ORIGIN || 'https://www.corronilcontrol.com'];
-app.use(cors({ origin: allowedOrigins, optionsSuccessStatus: 200 }));
+app.use(cors({
+  origin: allowedOrigins,
+  optionsSuccessStatus: 200,
+}));
 
 // Serve static frontend
 app.use(express.static(path.join(__dirname, 'public')));
@@ -44,9 +47,23 @@ app.get('/robots.txt', (req, res) => {
 });
 
 // ===============================
-// Connect to MongoDB
+// MongoDB Connection
 // ===============================
-connectDB(); // Connect using db.js
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => {
+    console.error('❌ MongoDB connection failed:', err);
+    process.exit(1);
+  });
+
+// ===============================
+// Mongoose Schema
+// ===============================
+const Contact = mongoose.model('Contact', new mongoose.Schema({
+  name: { type: String, required: true, trim: true },
+  email: { type: String, required: true, trim: true, lowercase: true },
+  message: { type: String, required: true, trim: true },
+}, { timestamps: true }));
 
 // ===============================
 // Nodemailer Transporter
@@ -60,7 +77,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // ===============================
-// contact Route
+// Contact Route
 // ===============================
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
@@ -70,7 +87,7 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    await contact.create({ name, email, message });
+    await Contact.create({ name, email, message });
 
     const mailOptions = {
       from: `"${name}" <${email}>`,
