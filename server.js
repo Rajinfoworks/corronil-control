@@ -1,17 +1,17 @@
 // ===============================
 // Required Modules
 // ===============================
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const path = require('path');
-const nodemailer = require('nodemailer');
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const path = require("path");
+const nodemailer = require("nodemailer");
 
 // ===============================
 // Validate Environment Variables
 // ===============================
-const requiredEnvs = ['PORT', 'MONGO_URI', 'EMAIL_USER', 'EMAIL_PASS', 'EMAIL_RECEIVER'];
+const requiredEnvs = ["PORT", "MONGO_URI", "EMAIL_USER", "EMAIL_PASS", "EMAIL_RECEIVER"];
 requiredEnvs.forEach((key) => {
   if (!process.env[key]) {
     console.error(`❌ Environment variable ${key} is missing! Please add it to your .env`);
@@ -23,100 +23,115 @@ requiredEnvs.forEach((key) => {
 // Initialize App
 // ===============================
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 // ===============================
 // Middleware
 // ===============================
+const allowedOrigins = [
+  process.env.CLIENT_ORIGIN || "https://www.corronilcontrol.com",
+  "http://localhost:5000", // for local dev
+  "http://127.0.0.1:5000",
+];
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
-
-// Restrict CORS to your domain
-const allowedOrigins = [process.env.CLIENT_ORIGIN || 'https://www.corronilcontrol.com'];
-app.use(cors({
-  origin: allowedOrigins,
-  optionsSuccessStatus: 200,
-}));
-
-// Serve static frontend
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Serve robots.txt explicitly
-app.get('/robots.txt', (req, res) => {
-  res.type('text/plain');
-  res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
-});
+app.use(express.urlencoded({ extended: true }));
 
 // ===============================
 // MongoDB Connection
 // ===============================
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB'))
-  .catch(err => {
-    console.error('❌ MongoDB connection failed:', err);
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ Connected to MongoDB"))
+  .catch((err) => {
+    console.error("❌ MongoDB connection failed:", err.message);
     process.exit(1);
   });
 
 // ===============================
 // Mongoose Schema
 // ===============================
-const Contact = mongoose.model('Contact', new mongoose.Schema({
-  name: { type: String, required: true, trim: true },
-  email: { type: String, required: true, trim: true, lowercase: true },
-  message: { type: String, required: true, trim: true },
-}, { timestamps: true }));
+const Contact = mongoose.model(
+  "Contact",
+  new mongoose.Schema(
+    {
+      name: { type: String, required: true, trim: true },
+      email: { type: String, required: true, trim: true, lowercase: true },
+      message: { type: String, required: true, trim: true },
+    },
+    { timestamps: true }
+  )
+);
 
 // ===============================
 // Nodemailer Transporter
 // ===============================
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
 });
 
+// Verify transporter at startup
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ Email transporter error:", error.message);
+  } else {
+    console.log("📧 Email transporter ready");
+  }
+});
+
 // ===============================
 // Contact Route
 // ===============================
-app.post('/api/contact', async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
-    return res.status(400).json({ success: false, message: '❌ All fields are required' });
+    return res.status(400).json({ success: false, message: "❌ All fields are required" });
   }
 
   try {
+    // Save in DB
     await Contact.create({ name, email, message });
 
+    // Send mail
     const mailOptions = {
       from: `"${name}" <${email}>`,
       to: process.env.EMAIL_RECEIVER,
-      subject: 'New Message from CORRONiL CONTROL Website',
+      subject: "New Message from CORRONiL CONTROL Website",
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
 
     await transporter.sendMail(mailOptions);
-    res.json({ success: true, message: '✅ Message saved and email sent!' });
+    res.status(201).json({ success: true, message: "✅ Message saved and email sent!" });
   } catch (err) {
-    console.error('❌ Error:', err);
-    res.status(500).json({ success: false, message: '❌ Something went wrong' });
+    console.error("❌ Error in /api/contact:", err.message);
+    res.status(500).json({ success: false, message: "❌ Something went wrong, please try again later." });
   }
 });
 
 // ===============================
-// Serve Frontend Routes (SPA)
+// Static Files + SPA Routes
 // ===============================
-const SPA_ROUTES = ['/', '/about', '/services', '/projects', '/clients', '/contact', '/blog.html', '/faq.html'];
+app.use(express.static(path.join(__dirname, "public")));
+
+const SPA_ROUTES = ["/", "/about", "/services", "/projects", "/clients", "/contact", "/blog.html", "/faq.html"];
 app.get(SPA_ROUTES, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// ===============================
+// Robots.txt explicitly
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain");
+  res.sendFile(path.join(__dirname, "public", "robots.txt"));
+});
+
 // 404 Fallback
-// ===============================
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
 });
 
 // ===============================
