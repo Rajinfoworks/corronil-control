@@ -36,34 +36,39 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      try {
-        const res = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
+      const baseUrl = window.location.hostname === "localhost" 
+  ? "http://localhost:5000" 
+  : "https://www.corronilcontrol.com";
 
-        const data = await res.json();
-        if (res.ok && data.success) {
-          if(messageEl) {
-            messageEl.textContent = data.message || "✅ Message sent successfully!";
-            messageEl.classList.remove("error");
-            messageEl.classList.add("success");
-          }
-          form.reset();
-        } else {
-          if(messageEl) {
-            messageEl.textContent = data.message || "❌ Failed to send message.";
-            messageEl.classList.add("error");
-          }
-        }
-      } catch (err) {
-        console.error("Form Error:", err);
-        if(messageEl) {
-          messageEl.textContent = "🚫 Could not connect to server.";
-          messageEl.classList.add("error");
-        }
-      }
+try {
+  const res = await fetch(`${baseUrl}/api/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  const data = await res.json();
+  if (res.ok && data.success) {
+    if(messageEl) {
+      messageEl.textContent = data.message || "✅ Message sent successfully!";
+      messageEl.classList.remove("error");
+      messageEl.classList.add("success");
+    }
+    form.reset();
+  } else {
+    if(messageEl) {
+      messageEl.textContent = data.message || "❌ Failed to send message.";
+      messageEl.classList.add("error");
+    }
+  }
+} catch (err) {
+  console.error("Form Error:", err);
+  if(messageEl) {
+    messageEl.textContent = "🚫 Could not connect to server.";
+    messageEl.classList.add("error");
+  }
+}
+
     });
   }
 
