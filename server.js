@@ -64,27 +64,27 @@ const Contact = mongoose.model(
 );
 
 // ===============================
-// Nodemailer Transporter
+// Nodemailer Transporter (SendGrid)
 // ===============================
 const transporter = nodemailer.createTransport({
   host: "smtp.sendgrid.net",
   port: 587,
   secure: false, // true for 465
   auth: {
-    user: "apikey",           // literal string "apikey"
-    pass: process.env.SENDGRID_API_KEY, // your SendGrid API key
+    user: "apikey", // literal string "apikey"
+    pass: process.env.SENDGRID_API_KEY,
   },
 });
 
-
-// Verify transporter at startup
+// Optional: verify transporter
 transporter.verify((error, success) => {
   if (error) {
     console.error("❌ Email transporter error:", error.message);
   } else {
-    console.log("📧 Email transporter ready");
+    console.log("📧 Email transporter ready (SendGrid)");
   }
 });
+
 
 // ===============================
 // Contact Route
