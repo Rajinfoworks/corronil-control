@@ -17,58 +17,69 @@ document.addEventListener("DOMContentLoaded", () => {
   if (darkModeIcon) darkModeIcon.textContent = body.classList.contains("dark-mode") ? "🔆" : "🌙";
 
   // ===== Contact Form Submission =====
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+if (form) {
+  const originalBtnText = form.querySelector("button")?.textContent || "Send";
 
-      const formData = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        message: form.message.value.trim(),
-      };
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      if (!formData.name || !formData.email || !formData.message) {
+    const formData = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      message: form.message.value.trim(),
+    };
+
+    // Validate inputs
+    if (!formData.name || !formData.email || !formData.message) {
+      if (messageEl) {
+        messageEl.textContent = "⚠️ Please fill in all fields.";
+        messageEl.className = "error";
+      }
+      return;
+    }
+
+    // Show loading state
+    const submitBtn = form.querySelector("button");
+    if (submitBtn) submitBtn.textContent = "Sending...";
+
+    const baseUrl =
+      window.location.hostname === "localhost"
+        ? "http://localhost:5000"
+        : "https://www.corronilcontrol.com";
+
+    try {
+      const res = await fetch(`${baseUrl}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
         if (messageEl) {
-          messageEl.textContent = "⚠️ Please fill in all fields.";
+          messageEl.textContent = data.message || "✅ Message sent successfully!";
+          messageEl.className = "success";
+        }
+        form.reset();
+      } else {
+        if (messageEl) {
+          messageEl.textContent = data.message || "❌ Failed to send message.";
           messageEl.className = "error";
         }
-        return;
       }
-
-      const baseUrl =
-        window.location.hostname === "localhost"
-          ? "http://localhost:5000"
-          : "https://www.corronilcontrol.com";
-
-      try {
-        const res = await fetch(`${baseUrl}/api/contact`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-
-        const data = await res.json();
-        if (res.ok && data.success) {
-          if (messageEl) {
-            messageEl.textContent = data.message || "✅ Message sent successfully!";
-            messageEl.className = "success";
-          }
-          form.reset();
-        } else {
-          if (messageEl) {
-            messageEl.textContent = data.message || "❌ Failed to send message.";
-            messageEl.className = "error";
-          }
-        }
-      } catch (err) {
-        console.error("Form Error:", err);
-        if (messageEl) {
-          messageEl.textContent = "🚫 Could not connect to server.";
-          messageEl.className = "error";
-        }
+    } catch (err) {
+      console.error("Form Error:", err);
+      if (messageEl) {
+        messageEl.textContent = "🚫 Could not connect to server.";
+        messageEl.className = "error";
       }
-    });
-  }
+    } finally {
+      if (submitBtn) submitBtn.textContent = originalBtnText;
+    }
+  });
+}
+
 
   // ===== Dark Mode Toggle =====
   window.toggleDarkMode = () => {

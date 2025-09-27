@@ -1,17 +1,22 @@
 // ===============================
 // Required Modules
 // ===============================
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const path = require("path");
-const nodemailer = require("nodemailer");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+import { sendMail } from "./mailer.js";
+
+dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // ===============================
 // Validate Environment Variables
 // ===============================
-const requiredEnvs = ["PORT", "MONGO_URI", "EMAIL_USER", "EMAIL_PASS", "EMAIL_RECEIVER"];
+const requiredEnvs = ["PORT", "MONGO_URI", "SENDGRID_API_KEY", "EMAIL_RECEIVER"];
 requiredEnvs.forEach((key) => {
   if (!process.env[key]) {
     console.error(`❌ Environment variable ${key} is missing! Please add it to your .env`);
@@ -30,7 +35,7 @@ const PORT = process.env.PORT || 5000;
 // ===============================
 const allowedOrigins = [
   process.env.CLIENT_ORIGIN || "https://www.corronilcontrol.com",
-  "http://localhost:5000", // for local dev
+  "http://localhost:5000",
   "http://127.0.0.1:5000",
 ];
 app.use(cors({ origin: allowedOrigins }));
@@ -64,57 +69,45 @@ const Contact = mongoose.model(
 );
 
 // ===============================
-// Nodemailer Transporter (SendGrid)
-// ===============================
-const transporter = nodemailer.createTransport({
-  host: "smtp.sendgrid.net",
-  port: 587,
-  secure: false, // true for 465
-  auth: {
-    user: "apikey", // literal string "apikey"
-    pass: process.env.SENDGRID_API_KEY,
-  },
-});
-
-// Optional: verify transporter
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("❌ Email transporter error:", error.message);
-  } else {
-    console.log("📧 Email transporter ready (SendGrid)");
-  }
-});
-
-
-// ===============================
 // Contact Route
 // ===============================
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
-  if (!name || !email || !message) {
-    return res.status(400).json({ success: false, message: "❌ All fields are required" });
+  // Basic validation
+  if (!name?.trim() || !email?.trim() || !message?.trim()) {
+    return res.status(400).json({
+      success: false,
+      message: "⚠️ All fields (name, email, message) are required.",
+    });
   }
 
   try {
-    // Save in DB
-    await Contact.create({ name, email, message });
+    // Save message in MongoDB
+    const newContact = await Contact.create({ name, email, message });
 
-    // Send mail
-    const mailOptions = {
-      from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_RECEIVER,
+    // Send email via SendGrid API
+    await sendMail({
+      fromName: name,
+      fromEmail: email,
       subject: "New Message from CORRONiL CONTROL Website",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    };
+      text: message,
+    });
 
-    await transporter.sendMail(mailOptions);
-    res.status(201).json({ success: true, message: "✅ Message saved and email sent!" });
-  } catch (err) {
-    console.error("❌ Error in /api/contact:", err.message);
-    res.status(500).json({ success: false, message: "❌ Something went wrong, please try again later." });
+    res.status(201).json({
+      success: true,
+      message: "✅ Your message has been saved and email sent successfully!",
+      data: newContact,
+    });
+  } catch (error) {
+    console.error("❌ Error in /api/contact:", error);
+    res.status(500).json({
+      success: false,
+      message: "🚫 Server error. Please try again later.",
+    });
   }
 });
+
 
 // ===============================
 // Static Files + SPA Routes
