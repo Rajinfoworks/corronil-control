@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CORRONiL CONTROL – Industrial Surface Protection & Anti-Corrosion Coating Solutions in India",
   "main": "server.js",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
     "node": ">=18.0.0"
   },
