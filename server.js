@@ -67,12 +67,15 @@ const Contact = mongoose.model(
 // Nodemailer Transporter
 // ===============================
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.sendgrid.net",
+  port: 587,
+  secure: false, // true for 465
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: "apikey",           // literal string "apikey"
+    pass: process.env.SENDGRID_API_KEY, // your SendGrid API key
   },
 });
+
 
 // Verify transporter at startup
 transporter.verify((error, success) => {
